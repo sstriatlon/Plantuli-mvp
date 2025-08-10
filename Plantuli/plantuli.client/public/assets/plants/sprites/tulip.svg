@@ -1,0 +1,56 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Detailed tulip for canvas -->
+  <g transform="translate(32, 32)">
+    <!-- Large detailed tulip flower -->
+    <g transform="translate(0, -20)">
+      <!-- Outer petals with gradient effect -->
+      <ellipse cx="-2.5" cy="0" rx="3.5" ry="8" fill="#e11d48" transform="rotate(-25)"/>
+      <ellipse cx="2.5" cy="0" rx="3.5" ry="8" fill="#e11d48" transform="rotate(25)"/>
+      <ellipse cx="0" cy="-1" rx="3.5" ry="8" fill="#f43f5e"/>
+      
+      <!-- Middle petals for layering -->
+      <ellipse cx="-1.5" cy="1" rx="2.5" ry="6" fill="#be185d" opacity="0.9" transform="rotate(-15)"/>
+      <ellipse cx="1.5" cy="1" rx="2.5" ry="6" fill="#be185d" opacity="0.9" transform="rotate(15)"/>
+      <ellipse cx="0" cy="0" rx="2.5" ry="6" fill="#be185d" opacity="0.8"/>
+      
+      <!-- Inner petals -->
+      <ellipse cx="-1" cy="2" rx="1.8" ry="4" fill="#9d174d" opacity="0.9"/>
+      <ellipse cx="1" cy="2" rx="1.8" ry="4" fill="#9d174d" opacity="0.9"/>
+      <ellipse cx="0" cy="1.5" rx="1.8" ry="4" fill="#9d174d" opacity="0.8"/>
+      
+      <!-- Petal details/lines -->
+      <line x1="-2.5" y1="-6" x2="-2.5" y2="6" stroke="#be185d" stroke-width="0.8" opacity="0.6"/>
+      <line x1="2.5" y1="-6" x2="2.5" y2="6" stroke="#be185d" stroke-width="0.8" opacity="0.6"/>
+      <line x1="0" y1="-7" x2="0" y2="5" stroke="#be185d" stroke-width="0.8" opacity="0.6"/>
+      
+      <!-- Center stamen -->
+      <circle cx="0" cy="3" r="1.2" fill="#fbbf24"/>
+      <circle cx="-0.5" cy="2.5" r="0.3" fill="#a16207"/>
+      <circle cx="0.5" cy="2.5" r="0.3" fill="#a16207"/>
+      <circle cx="0" cy="3.5" r="0.3" fill="#a16207"/>
+    </g>
+    
+    <!-- Thick stem -->
+    <rect x="-1.5" y="-12" width="3" height="32" fill="#16a34a"/>
+    
+    <!-- Large tulip leaves -->
+    <ellipse cx="-8" cy="0" rx="2.5" ry="12" fill="#22c55e" transform="rotate(-20)"/>
+    <ellipse cx="8" cy="4" rx="2.5" ry="12" fill="#22c55e" transform="rotate(20)"/>
+    
+    <!-- Leaf veins */
+    <line x1="-8" y1="-11" x2="-8" y2="11" stroke="#16a34a" stroke-width="1" opacity="0.7"/>
+    <line x1="8" y1="-7" x2="8" y2="15" stroke="#16a34a" stroke-width="1" opacity="0.7"/>
+    
+    <!-- Additional leaf details */
+    <line x1="-9" y1="-8" x2="-7" y2="-6" stroke="#16a34a" stroke-width="0.6" opacity="0.5"/>
+    <line x1="-9" y1="0" x2="-7" y2="2" stroke="#16a34a" stroke-width="0.6" opacity="0.5"/>
+    <line x1="-9" y1="8" x2="-7" y2="10" stroke="#16a34a" stroke-width="0.6" opacity="0.5"/>
+    
+    <line x1="9" y1="-4" x2="7" y2="-2" stroke="#16a34a" stroke-width="0.6" opacity="0.5"/>
+    <line x1="9" y1="4" x2="7" y2="6" stroke="#16a34a" stroke-width="0.6" opacity="0.5"/>
+    <line x1="9" y1="12" x2="7" y2="14" stroke="#16a34a" stroke-width="0.6" opacity="0.5"/>
+    
+    <!-- Underground bulb hint -->
+    <ellipse cx="0" cy="20" rx="3" ry="2" fill="#92400e" opacity="0.6"/>
+  </g>
+</svg>

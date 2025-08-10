@@ -1,0 +1,50 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Large detailed pine tree for canvas -->
+  <g transform="translate(32, 32)">
+    <!-- Detailed pine crown with multiple layers -->
+    <!-- Top spire -->
+    <polygon points="0,-28 -3,-22 3,-22" fill="#134e4a"/>
+    <!-- Upper layers -->
+    <polygon points="0,-24 -5,-18 5,-18" fill="#166534"/>
+    <polygon points="0,-20 -7,-14 7,-14" fill="#15803d"/>
+    <!-- Middle layers -->
+    <polygon points="0,-16 -9,-10 9,-10" fill="#166534"/>
+    <polygon points="0,-12 -11,-6 11,-6" fill="#15803d"/>
+    <!-- Lower layers -->
+    <polygon points="0,-8 -13,-2 13,-2" fill="#166534"/>
+    <polygon points="0,-4 -15,4 15,4" fill="#15803d"/>
+    
+    <!-- Thick trunk -->
+    <rect x="-2.5" y="4" width="5" height="24" fill="#92400e"/>
+    
+    <!-- Trunk texture -->
+    <rect x="-2" y="6" width="0.5" height="20" fill="#78350f" opacity="0.7"/>
+    <rect x="1.5" y="8" width="0.5" height="18" fill="#78350f" opacity="0.7"/>
+    <rect x="-0.5" y="10" width="0.5" height="16" fill="#78350f" opacity="0.7"/>
+    
+    <!-- Branch texture lines -->
+    <line x1="-4" y1="-26" x2="4" y2="-26" stroke="#0f766e" stroke-width="0.8"/>
+    <line x1="-6" y1="-20" x2="6" y2="-20" stroke="#0f766e" stroke-width="0.8"/>
+    <line x1="-8" y1="-16" x2="8" y2="-16" stroke="#0f766e" stroke-width="0.8"/>
+    <line x1="-10" y1="-12" x2="10" y2="-12" stroke="#0f766e" stroke-width="0.8"/>
+    <line x1="-12" y1="-8" x2="12" y2="-8" stroke="#0f766e" stroke-width="0.8"/>
+    <line x1="-14" y1="-4" x2="14" y2="-4" stroke="#0f766e" stroke-width="0.8"/>
+    <line x1="-16" y1="0" x2="16" y2="0" stroke="#0f766e" stroke-width="0.8"/>
+    
+    <!-- Additional needle detail -->
+    <g stroke="#0f766e" stroke-width="0.4" opacity="0.6">
+      <line x1="-2" y1="-24" x2="2" y2="-24"/>
+      <line x1="-4" y1="-18" x2="4" y2="-18"/>
+      <line x1="-6" y1="-14" x2="6" y2="-14"/>
+      <line x1="-8" y1="-10" x2="8" y2="-10"/>
+      <line x1="-10" y1="-6" x2="10" y2="-6"/>
+      <line x1="-12" y1="-2" x2="12" y2="-2"/>
+      <line x1="-14" y1="2" x2="14" y2="2"/>
+    </g>
+    
+    <!-- Root system */
+    <ellipse cx="0" cy="28" rx="8" ry="3" fill="#78350f" opacity="0.6"/>
+    <ellipse cx="-5" cy="26" rx="3" ry="1.5" fill="#78350f" opacity="0.4"/>
+    <ellipse cx="5" cy="26" rx="3" ry="1.5" fill="#78350f" opacity="0.4"/>
+  </g>
+</svg>

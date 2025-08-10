@@ -1,0 +1,18 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Petals -->
+  <circle cx="12" cy="10" r="3" fill="#dc2626" opacity="0.9"/>
+  <circle cx="10" cy="9" r="2.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="14" cy="9" r="2.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="11" cy="11.5" r="2" fill="#dc2626" opacity="0.7"/>
+  <circle cx="13" cy="11.5" r="2" fill="#dc2626" opacity="0.7"/>
+  
+  <!-- Center -->
+  <circle cx="12" cy="10" r="1.5" fill="#991b1b"/>
+  
+  <!-- Stem -->
+  <rect x="11.5" y="13" width="1" height="8" fill="#166534"/>
+  
+  <!-- Leaves -->
+  <ellipse cx="10" cy="16" rx="1.5" ry="1" fill="#16a34a" transform="rotate(-30 10 16)"/>
+  <ellipse cx="14" cy="18" rx="1.5" ry="1" fill="#16a34a" transform="rotate(30 14 18)"/>
+</svg>

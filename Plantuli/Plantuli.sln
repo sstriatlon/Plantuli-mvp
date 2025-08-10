@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "plantuli.client", "plantuli.client\plantuli.client.esproj", "{842FD857-AE94-6BAF-A300-AED1E54AB79B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plantuli.Server", "Plantuli.Server\Plantuli.Server.csproj", "{ACE8C55E-CA23-4BF3-971A-4D5EEB1D7367}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		docs\backlog.md = docs\backlog.md
+		claude.md = claude.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		copilot-instructions.md = copilot-instructions.md
+		instructions.md = instructions.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{842FD857-AE94-6BAF-A300-AED1E54AB79B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{842FD857-AE94-6BAF-A300-AED1E54AB79B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{842FD857-AE94-6BAF-A300-AED1E54AB79B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{842FD857-AE94-6BAF-A300-AED1E54AB79B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{842FD857-AE94-6BAF-A300-AED1E54AB79B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{842FD857-AE94-6BAF-A300-AED1E54AB79B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{ACE8C55E-CA23-4BF3-971A-4D5EEB1D7367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACE8C55E-CA23-4BF3-971A-4D5EEB1D7367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACE8C55E-CA23-4BF3-971A-4D5EEB1D7367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACE8C55E-CA23-4BF3-971A-4D5EEB1D7367}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65FC2732-565B-45E2-A8CF-2DAC2E7DB91B}
+	EndGlobalSection
+EndGlobal

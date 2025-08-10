@@ -1,0 +1,40 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Large sunflower for canvas -->
+  <g transform="translate(32, 20)">
+    <!-- Outer ring of petals -->
+    <ellipse cx="0" cy="-8" rx="2" ry="6" fill="#fbbf24"/>
+    <ellipse cx="5.6" cy="-5.6" rx="2" ry="6" fill="#fbbf24" transform="rotate(45 5.6 -5.6)"/>
+    <ellipse cx="8" cy="0" rx="2" ry="6" fill="#fbbf24" transform="rotate(90 8 0)"/>
+    <ellipse cx="5.6" cy="5.6" rx="2" ry="6" fill="#fbbf24" transform="rotate(135 5.6 5.6)"/>
+    <ellipse cx="0" cy="8" rx="2" ry="6" fill="#fbbf24" transform="rotate(180 0 8)"/>
+    <ellipse cx="-5.6" cy="5.6" rx="2" ry="6" fill="#fbbf24" transform="rotate(225 -5.6 5.6)"/>
+    <ellipse cx="-8" cy="0" rx="2" ry="6" fill="#fbbf24" transform="rotate(270 -8 0)"/>
+    <ellipse cx="-5.6" cy="-5.6" rx="2" ry="6" fill="#fbbf24" transform="rotate(315 -5.6 -5.6)"/>
+    
+    <!-- Inner ring of petals -->
+    <ellipse cx="0" cy="-6" rx="1.5" ry="4" fill="#f59e0b"/>
+    <ellipse cx="4.2" cy="-4.2" rx="1.5" ry="4" fill="#f59e0b" transform="rotate(45 4.2 -4.2)"/>
+    <ellipse cx="6" cy="0" rx="1.5" ry="4" fill="#f59e0b" transform="rotate(90 6 0)"/>
+    <ellipse cx="4.2" cy="4.2" rx="1.5" ry="4" fill="#f59e0b" transform="rotate(135 4.2 4.2)"/>
+    <ellipse cx="0" cy="6" rx="1.5" ry="4" fill="#f59e0b" transform="rotate(180 0 6)"/>
+    <ellipse cx="-4.2" cy="4.2" rx="1.5" ry="4" fill="#f59e0b" transform="rotate(225 -4.2 4.2)"/>
+    <ellipse cx="-6" cy="0" rx="1.5" ry="4" fill="#f59e0b" transform="rotate(270 -6 0)"/>
+    <ellipse cx="-4.2" cy="-4.2" rx="1.5" ry="4" fill="#f59e0b" transform="rotate(315 -4.2 -4.2)"/>
+    
+    <!-- Center with seeds pattern -->
+    <circle cx="0" cy="0" r="5" fill="#a16207"/>
+    <circle cx="-1" cy="-1" r="0.5" fill="#78350f"/>
+    <circle cx="1" cy="-1" r="0.5" fill="#78350f"/>
+    <circle cx="0" cy="1" r="0.5" fill="#78350f"/>
+    <circle cx="-1.5" cy="1.5" r="0.3" fill="#78350f"/>
+    <circle cx="1.5" cy="1.5" r="0.3" fill="#78350f"/>
+  </g>
+  
+  <!-- Thick stem -->
+  <rect x="30" y="28" width="4" height="32" fill="#166534"/>
+  
+  <!-- Large leaves -->
+  <ellipse cx="22" cy="40" rx="6" ry="4" fill="#16a34a" transform="rotate(-30 22 40)"/>
+  <ellipse cx="42" cy="46" rx="6" ry="4" fill="#16a34a" transform="rotate(30 42 46)"/>
+  <ellipse cx="18" cy="52" rx="5" ry="3" fill="#15803d" transform="rotate(-15 18 52)"/>
+</svg>

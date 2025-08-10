@@ -1,0 +1,88 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Detailed mint plant for canvas -->
+  <g transform="translate(32, 32)">
+    <!-- Multiple mint stems -->
+    <rect x="-1" y="-20" width="2" height="35" fill="#16a34a"/>
+    <rect x="-5" y="-16" width="1.5" height="28" fill="#15803d"/>
+    <rect x="3.5" y="-14" width="1.5" height="26" fill="#15803d"/>
+    <rect x="-8" y="-12" width="1.2" height="22" fill="#15803d"/>
+    <rect x="7" y="-10" width="1.2" height="20" fill="#15803d"/>
+    
+    <!-- Large serrated mint leaves -->
+    <g fill="#22c55e">
+      <!-- Upper level leaves -->
+      <path d="M-7,-12 L-2,-16 L-2,-8 L-4,-6 L-6,-8 Z"/>
+      <path d="M-2,-16 L3,-15 L-2,-8 L0,-6 L-1,-10 Z"/>
+      <path d="M3,-15 L8,-11 L3,-8 L5,-6 L6,-9 Z"/>
+      
+      <!-- Mid level leaves -->
+      <path d="M-6,-6 L-2,-10 L-2,-2 L-3,0 L-5,-2 Z"/>
+      <path d="M-2,-10 L3,-9 L-2,-2 L1,0 L0,-4 Z"/>
+      <path d="M3,-9 L7,-5 L3,-2 L5,0 L6,-3 Z"/>
+      
+      <!-- Lower level leaves -->
+      <path d="M-5,2 L-2,-2 L-2,6 L-3,8 L-4,4 Z"/>
+      <path d="M-2,-2 L3,-1 L-2,6 L1,8 L0,2 Z"/>
+      <path d="M3,-1 L6,3 L3,6 L4,8 L5,4 Z"/>
+      
+      <!-- Additional side leaves */
+      <path d="M-9,-8 L-6,-12 L-6,-4 L-7,-2 L-8,-6 Z"/>
+      <path d="M9,-7 L6,-11 L6,-3 L7,-1 L8,-5 Z"/>
+      <path d="M-8,0 L-5,-4 L-5,4 L-6,6 L-7,2 Z"/>
+      <path d="M8,1 L5,-3 L5,5 L6,7 L7,3 Z"/>
+    </g>
+    
+    <!-- Darker serrated leaves for depth -->
+    <g fill="#16a34a" opacity="0.9">
+      <path d="M-6.5,-11 L-3,-14 L-3,-7 L-4.5,-5 L-5.5,-8.5 Z"/>
+      <path d="M6.5,-10 L3,-13 L3,-6 L4.5,-4 L5.5,-7.5 Z"/>
+      <path d="M-5.5,-5 L-2.5,-8 L-2.5,-1 L-3.5,1 L-4.5,-2.5 Z"/>
+      <path d="M5.5,-4 L2.5,-7 L2.5,0 L3.5,2 L4.5,-1.5 Z"/>
+      <path d="M-4.5,3 L-2.5,0 L-2.5,7 L-3.5,9 L-4,5.5 Z"/>
+      <path d="M4.5,4 L2.5,1 L2.5,8 L3.5,10 L4,6.5 Z"/>
+    </g>
+    
+    <!-- Detailed leaf veins with serrated pattern -->
+    <g stroke="#15803d" stroke-width="0.6" opacity="0.8">
+      <path d="M-7,-12 L-4,-10 L-2,-8"/>
+      <path d="M8,-11 L5,-9 L3,-8"/>
+      <path d="M-6,-6 L-4,-4 L-2,-2"/>
+      <path d="M7,-5 L5,-3 L3,-2"/>
+      <path d="M-5,2 L-3,4 L-2,6"/>
+      <path d="M6,3 L4,5 L3,6"/>
+      
+      <!-- Secondary veins -->
+      <path d="M-9,-8 L-7,-6 L-6,-4"/>
+      <path d="M9,-7 L7,-5 L6,-3"/>
+      <path d="M-8,0 L-6,2 L-5,4"/>
+      <path d="M8,1 L6,3 L5,5"/>
+    </g>
+    
+    <!-- Mint flower spikes -->
+    <g fill="#c084fc">
+      <ellipse cx="-1" cy="-18" rx="1.5" ry="3" opacity="0.9"/>
+      <ellipse cx="1" cy="-17" rx="1.2" ry="2.5" opacity="0.8"/>
+      <ellipse cx="-5" cy="-14" rx="1" ry="2" opacity="0.7"/>
+      <ellipse cx="4" cy="-12" rx="1" ry="2" opacity="0.7"/>
+    </g>
+    
+    <!-- Individual small flowers -->
+    <g fill="#ddd6fe">
+      <circle cx="-1.5" cy="-19" r="0.4"/>
+      <circle cx="-0.5" cy="-18" r="0.4"/>
+      <circle cx="0.5" cy="-17.5" r="0.3"/>
+      <circle cx="1.5" cy="-16.5" r="0.3"/>
+      <circle cx="-5.2" cy="-15" r="0.3"/>
+      <circle cx="-4.8" cy="-13.5" r="0.3"/>
+      <circle cx="4.2" cy="-13" r="0.3"/>
+      <circle cx="3.8" cy="-11.5" r="0.3"/>
+    </g>
+    
+    <!-- Root system with runners -->
+    <ellipse cx="0" cy="20" rx="8" ry="3" fill="#92400e" opacity="0.5"/>
+    <ellipse cx="-4" cy="18" rx="3" ry="1.5" fill="#92400e" opacity="0.4"/>
+    <ellipse cx="5" cy="19" rx="3" ry="1.5" fill="#92400e" opacity="0.4"/>
+    <ellipse cx="-7" cy="16" rx="2" ry="1" fill="#92400e" opacity="0.3"/>
+    <ellipse cx="8" cy="17" rx="2" ry="1" fill="#92400e" opacity="0.3"/>
+  </g>
+</svg>

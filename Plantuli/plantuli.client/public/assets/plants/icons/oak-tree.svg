@@ -1,0 +1,13 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Tree crown -->
+  <circle cx="12" cy="8" r="6" fill="#16a34a" opacity="0.8"/>
+  <circle cx="8" cy="9" r="4" fill="#15803d" opacity="0.7"/>
+  <circle cx="16" cy="9" r="4" fill="#15803d" opacity="0.7"/>
+  <circle cx="12" cy="5" r="3.5" fill="#22c55e" opacity="0.6"/>
+  
+  <!-- Trunk -->
+  <rect x="11" y="14" width="2" height="8" fill="#92400e"/>
+  
+  <!-- Roots indication -->
+  <ellipse cx="12" cy="22" rx="3" ry="0.5" fill="#78350f" opacity="0.6"/>
+</svg>

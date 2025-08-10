@@ -1,0 +1,79 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Carrot plant with feathery leaves - compact icon -->
+  <g transform="translate(12, 12)">
+    <!-- Carrot root underground -->
+    <g transform="translate(0, 4)">
+      <ellipse cx="0" cy="2" rx="1.2" ry="4" fill="#f97316"/>
+      <ellipse cx="0" cy="1.5" rx="1" ry="3.2" fill="#fb923c" opacity="0.9"/>
+      <ellipse cx="0" cy="1" rx="0.8" ry="2.4" fill="#fdba74" opacity="0.7"/>
+      <ellipse cx="0" cy="0.5" rx="0.6" ry="1.6" fill="#fed7aa" opacity="0.5"/>
+      <!-- Carrot lines -->
+      <g stroke="#ea580c" stroke-width="0.2" opacity="0.6">
+        <line x1="-0.8" y1="0" x2="0.8" y2="0"/>
+        <line x1="-0.9" y1="1" x2="0.9" y2="1"/>
+        <line x1="-1" y1="2" x2="1" y2="2"/>
+        <line x1="-1.1" y1="3" x2="1.1" y2="3"/>
+        <line x1="-0.8" y1="4" x2="0.8" y2="4"/>
+      </g>
+      <!-- Root tip -->
+      <ellipse cx="0" cy="5.5" rx="0.3" ry="0.8" fill="#ea580c"/>
+    </g>
+    
+    <!-- Feathery carrot leaves -->
+    <g fill="#22c55e" opacity="0.9">
+      <!-- Left feathery leaves -->
+      <g transform="translate(-2, -6)">
+        <rect x="0" y="0" width="0.2" height="8" fill="#16a34a"/>
+        <g fill="#22c55e">
+          <ellipse cx="-0.8" cy="1" rx="0.3" ry="1.2" transform="rotate(-45)"/>
+          <ellipse cx="-0.6" cy="2" rx="0.3" ry="1" transform="rotate(-30)"/>
+          <ellipse cx="-0.9" cy="3" rx="0.3" ry="1.4" transform="rotate(-50)"/>
+          <ellipse cx="-0.5" cy="4" rx="0.3" ry="0.8" transform="rotate(-25)"/>
+          <ellipse cx="-0.7" cy="5" rx="0.3" ry="1.1" transform="rotate(-40)"/>
+          <ellipse cx="0.8" cy="1.5" rx="0.3" ry="1.2" transform="rotate(45)"/>
+          <ellipse cx="0.6" cy="2.5" rx="0.3" ry="1" transform="rotate(30)"/>
+          <ellipse cx="0.9" cy="3.5" rx="0.3" ry="1.4" transform="rotate(50)"/>
+          <ellipse cx="0.5" cy="4.5" rx="0.3" ry="0.8" transform="rotate(25)"/>
+          <ellipse cx="0.7" cy="5.5" rx="0.3" ry="1.1" transform="rotate(40)"/>
+        </g>
+      </g>
+      
+      <!-- Center feathery leaves -->
+      <g transform="translate(0, -8)">
+        <rect x="0" y="0" width="0.2" height="10" fill="#16a34a"/>
+        <g fill="#22c55e">
+          <ellipse cx="-0.7" cy="1" rx="0.3" ry="1.3" transform="rotate(-40)"/>
+          <ellipse cx="-0.5" cy="2.5" rx="0.3" ry="1.1" transform="rotate(-25)"/>
+          <ellipse cx="-0.8" cy="4" rx="0.3" ry="1.5" transform="rotate(-45)"/>
+          <ellipse cx="-0.4" cy="5.5" rx="0.3" ry="0.9" transform="rotate(-20)"/>
+          <ellipse cx="-0.6" cy="7" rx="0.3" ry="1.2" transform="rotate(-35)"/>
+          <ellipse cx="0.7" cy="1.5" rx="0.3" ry="1.3" transform="rotate(40)"/>
+          <ellipse cx="0.5" cy="3" rx="0.3" ry="1.1" transform="rotate(25)"/>
+          <ellipse cx="0.8" cy="4.5" rx="0.3" ry="1.5" transform="rotate(45)"/>
+          <ellipse cx="0.4" cy="6" rx="0.3" ry="0.9" transform="rotate(20)"/>
+          <ellipse cx="0.6" cy="7.5" rx="0.3" ry="1.2" transform="rotate(35)"/>
+        </g>
+      </g>
+      
+      <!-- Right feathery leaves -->
+      <g transform="translate(2, -5)">
+        <rect x="0" y="0" width="0.2" height="7" fill="#16a34a"/>
+        <g fill="#22c55e">
+          <ellipse cx="-0.8" cy="0.5" rx="0.3" ry="1.1" transform="rotate(-45)"/>
+          <ellipse cx="-0.6" cy="1.5" rx="0.3" ry="0.9" transform="rotate(-30)"/>
+          <ellipse cx="-0.9" cy="2.5" rx="0.3" ry="1.3" transform="rotate(-50)"/>
+          <ellipse cx="-0.5" cy="3.5" rx="0.3" ry="0.7" transform="rotate(-25)"/>
+          <ellipse cx="-0.7" cy="4.5" rx="0.3" ry="1" transform="rotate(-40)"/>
+          <ellipse cx="0.8" cy="1" rx="0.3" ry="1.1" transform="rotate(45)"/>
+          <ellipse cx="0.6" cy="2" rx="0.3" ry="0.9" transform="rotate(30)"/>
+          <ellipse cx="0.9" cy="3" rx="0.3" ry="1.3" transform="rotate(50)"/>
+          <ellipse cx="0.5" cy="4" rx="0.3" ry="0.7" transform="rotate(25)"/>
+          <ellipse cx="0.7" cy="5" rx="0.3" ry="1" transform="rotate(40)"/>
+        </g>
+      </g>
+    </g>
+    
+    <!-- Ground line -->
+    <line x1="-4" y1="4" x2="4" y2="4" stroke="#92400e" stroke-width="0.5" opacity="0.6"/>
+  </g>
+</svg>

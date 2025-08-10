@@ -1,0 +1,108 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Thyme herb with small leaves - compact icon -->
+  <g transform="translate(12, 12)">
+    <!-- Main thyme stems -->
+    <rect x="-0.3" y="-8" width="0.6" height="16" fill="#16a34a"/>
+    <rect x="-2" y="-6" width="0.4" height="12" fill="#15803d"/>
+    <rect x="1.6" y="-5" width="0.4" height="10" fill="#15803d"/>
+    <rect x="-3.2" y="-4" width="0.3" height="8" fill="#15803d"/>
+    <rect x="2.9" y="-3" width="0.3" height="6" fill="#15803d"/>
+    
+    <!-- Small thyme leaves -->
+    <g fill="#22c55e" opacity="0.9">
+      <!-- Left side small leaves -->
+      <ellipse cx="-1.5" cy="-6.5" rx="0.4" ry="0.8" transform="rotate(-20)"/>
+      <ellipse cx="-1.2" cy="-5.8" rx="0.3" ry="0.6" transform="rotate(-15)"/>
+      <ellipse cx="-1.8" cy="-5.2" rx="0.4" ry="0.9" transform="rotate(-25)"/>
+      <ellipse cx="-1.1" cy="-4.5" rx="0.3" ry="0.5" transform="rotate(-10)"/>
+      <ellipse cx="-1.6" cy="-3.8" rx="0.4" ry="0.7" transform="rotate(-22)"/>
+      <ellipse cx="-0.9" cy="-3.1" rx="0.3" ry="0.6" transform="rotate(-8)"/>
+      <ellipse cx="-1.4" cy="-2.4" rx="0.4" ry="0.8" transform="rotate(-18)"/>
+      <ellipse cx="-0.8" cy="-1.7" rx="0.3" ry="0.5" transform="rotate(-5)"/>
+      <ellipse cx="-1.3" cy="-1" rx="0.4" ry="0.7" transform="rotate(-20)"/>
+      <ellipse cx="-0.7" cy="-0.3" rx="0.3" ry="0.6" transform="rotate(-3)"/>
+      <ellipse cx="-1.2" cy="0.4" rx="0.4" ry="0.8" transform="rotate(-15)"/>
+      <ellipse cx="-0.6" cy="1.1" rx="0.3" ry="0.5"/>
+      <ellipse cx="-1.1" cy="1.8" rx="0.4" ry="0.7" transform="rotate(-12)"/>
+      <ellipse cx="-0.5" cy="2.5" rx="0.3" ry="0.6"/>
+    </g>
+    
+    <g fill="#22c55e" opacity="0.9">
+      <!-- Right side small leaves -->
+      <ellipse cx="1.5" cy="-5.5" rx="0.4" ry="0.8" transform="rotate(20)"/>
+      <ellipse cx="1.2" cy="-4.8" rx="0.3" ry="0.6" transform="rotate(15)"/>
+      <ellipse cx="1.8" cy="-4.2" rx="0.4" ry="0.9" transform="rotate(25)"/>
+      <ellipse cx="1.1" cy="-3.5" rx="0.3" ry="0.5" transform="rotate(10)"/>
+      <ellipse cx="1.6" cy="-2.8" rx="0.4" ry="0.7" transform="rotate(22)"/>
+      <ellipse cx="0.9" cy="-2.1" rx="0.3" ry="0.6" transform="rotate(8)"/>
+      <ellipse cx="1.4" cy="-1.4" rx="0.4" ry="0.8" transform="rotate(18)"/>
+      <ellipse cx="0.8" cy="-0.7" rx="0.3" ry="0.5" transform="rotate(5)"/>
+      <ellipse cx="1.3" cy="0" rx="0.4" ry="0.7" transform="rotate(20)"/>
+      <ellipse cx="0.7" cy="0.7" rx="0.3" ry="0.6" transform="rotate(3)"/>
+      <ellipse cx="1.2" cy="1.4" rx="0.4" ry="0.8" transform="rotate(15)"/>
+      <ellipse cx="0.6" cy="2.1" rx="0.3" ry="0.5"/>
+      <ellipse cx="1.1" cy="2.8" rx="0.4" ry="0.7" transform="rotate(12)"/>
+    </g>
+    
+    <g fill="#16a34a" opacity="0.8">
+      <!-- Center small leaves -->
+      <ellipse cx="-0.4" cy="-7.2" rx="0.3" ry="0.6"/>
+      <ellipse cx="0.4" cy="-6.8" rx="0.3" ry="0.6"/>
+      <ellipse cx="-0.3" cy="-6.1" rx="0.3" ry="0.5"/>
+      <ellipse cx="0.3" cy="-5.7" rx="0.3" ry="0.5"/>
+      <ellipse cx="-0.2" cy="-5" rx="0.3" ry="0.6"/>
+      <ellipse cx="0.2" cy="-4.6" rx="0.3" ry="0.5"/>
+      <ellipse cx="-0.1" cy="-3.9" rx="0.3" ry="0.6"/>
+      <ellipse cx="0.1" cy="-3.5" rx="0.3" ry="0.5"/>
+      <ellipse cx="0" cy="-2.8" rx="0.3" ry="0.6"/>
+      <ellipse cx="0" cy="-2.1" rx="0.3" ry="0.5"/>
+      <ellipse cx="0" cy="-1.4" rx="0.3" ry="0.6"/>
+      <ellipse cx="0" cy="-0.7" rx="0.3" ry="0.5"/>
+      <ellipse cx="0" cy="0" rx="0.3" ry="0.6"/>
+      <ellipse cx="0" cy="0.7" rx="0.3" ry="0.5"/>
+      <ellipse cx="0" cy="1.4" rx="0.3" ry="0.6"/>
+      <ellipse cx="0" cy="2.1" rx="0.3" ry="0.5"/>
+    </g>
+    
+    <!-- Secondary branch leaves */
+    <g fill="#4ade80" opacity="0.8">
+      <ellipse cx="-3" cy="-3.5" rx="0.25" ry="0.5" transform="rotate(-30)"/>
+      <ellipse cx="-2.8" cy="-2.8" rx="0.2" ry="0.4" transform="rotate(-25)"/>
+      <ellipse cx="-3.2" cy="-2.1" rx="0.25" ry="0.5" transform="rotate(-35)"/>
+      <ellipse cx="-2.9" cy="-1.4" rx="0.2" ry="0.4" transform="rotate(-20)"/>
+      <ellipse cx="-3.1" cy="-0.7" rx="0.25" ry="0.5" transform="rotate(-30)"/>
+      <ellipse cx="-2.7" cy="0" rx="0.2" ry="0.4" transform="rotate(-15)"/>
+      
+      <ellipse cx="3" cy="-2.5" rx="0.25" ry="0.5" transform="rotate(30)"/>
+      <ellipse cx="2.8" cy="-1.8" rx="0.2" ry="0.4" transform="rotate(25)"/>
+      <ellipse cx="3.2" cy="-1.1" rx="0.25" ry="0.5" transform="rotate(35)"/>
+      <ellipse cx="2.9" cy="-0.4" rx="0.2" ry="0.4" transform="rotate(20)"/>
+      <ellipse cx="3.1" cy="0.3" rx="0.25" ry="0.5" transform="rotate(30)"/>
+      <ellipse cx="2.7" cy="1" rx="0.2" ry="0.4" transform="rotate(15)"/>
+    </g>
+    
+    <!-- Small thyme flowers -->
+    <g fill="#ddd6fe">
+      <circle cx="-1.8" cy="-6.8" r="0.2"/>
+      <circle cx="1.5" cy="-5.8" r="0.2"/>
+      <circle cx="-1.3" cy="-4.2" r="0.15"/>
+      <circle cx="1.7" cy="-3.5" r="0.15"/>
+      <circle cx="-0.8" cy="-2.8" r="0.15"/>
+      <circle cx="1.2" cy="-1.8" r="0.15"/>
+      <circle cx="-1.5" cy="-1.2" r="0.2"/>
+      <circle cx="0.9" cy="-0.5" r="0.15"/>
+      <circle cx="-1.1" cy="0.8" r="0.15"/>
+      <circle cx="1.4" cy="1.5" r="0.15"/>
+    </g>
+    
+    <!-- Woody base stems -->
+    <g fill="#8b5a2b" opacity="0.7">
+      <rect x="-0.4" y="4" width="0.8" height="4"/>
+      <rect x="-2.2" y="3" width="0.4" height="3"/>
+      <rect x="1.8" y="2.5" width="0.4" height="2.5"/>
+    </g>
+    
+    <!-- Root system */
+    <ellipse cx="0" cy="8" rx="3" ry="1.2" fill="#92400e" opacity="0.4"/>
+  </g>
+</svg>

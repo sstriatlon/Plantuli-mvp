@@ -1,0 +1,24 @@
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simple tomato plant for thumbnail -->
+  <g transform="translate(24, 24)">
+    <!-- Simple stem -->
+    <rect x="-1" y="-8" width="2" height="24" fill="#16a34a"/>
+    
+    <!-- Simple tomatoes -->
+    <circle cx="-6" cy="-6" r="3" fill="#dc2626"/>
+    <circle cx="6" cy="-2" r="2.5" fill="#ef4444"/>
+    <circle cx="-3" cy="2" r="2" fill="#f87171"/>
+    
+    <!-- Simple calyxes -->
+    <g transform="translate(-6, -6)">
+      <path d="M-1.5,-3 L0,-2 L1.5,-3" stroke="#16a34a" stroke-width="0.8" fill="none"/>
+    </g>
+    
+    <!-- Simple leaves -->
+    <ellipse cx="-8" cy="0" rx="2.5" ry="4" fill="#22c55e" transform="rotate(-20 -8 0)"/>
+    <ellipse cx="8" cy="4" rx="2.5" ry="4" fill="#22c55e" transform="rotate(20 8 4)"/>
+    
+    <!-- Simple support -->
+    <rect x="10" y="-12" width="1" height="28" fill="#92400e" opacity="0.7"/>
+  </g>
+</svg>
