@@ -102,10 +102,16 @@ export async function loadGardenNative(): Promise<{
         ];
 
         // Mostrar diálogo nativo "Abrir archivo..."
-        const [fileHandle] = await (window as Window & { showOpenFilePicker?: (options: any) => Promise<any[]> }).showOpenFilePicker?.({
+        const result = await (window as Window & { showOpenFilePicker?: (options: any) => Promise<any[]> }).showOpenFilePicker?.({
             types: options,
             multiple: false
         });
+        
+        if (!result || result.length === 0) {
+            return { success: false, error: 'No file selected' };
+        }
+        
+        const fileHandle = result[0];
 
         // Leer archivo
         const file = await fileHandle.getFile();

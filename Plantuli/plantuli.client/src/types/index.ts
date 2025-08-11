@@ -42,7 +42,7 @@ export interface Viewport {
   };
 }
 
-export type Tool = 'select' | 'add' | 'delete' | 'pan';
+export type Tool = 'select' | 'add' | 'delete' | 'pan' | 'clone-plant';
 
 export interface LayerVisibility {
   background: boolean;

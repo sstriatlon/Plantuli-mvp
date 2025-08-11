@@ -21,7 +21,7 @@ import {
     loadGardenFileInput, 
     isFileSystemAccessSupported 
 } from './utils/nativeFileSystem';
-import type { AppState, Viewport, LayerVisibility, Plant } from './types';
+import type { AppState, Viewport, LayerVisibility, Plant, Tool } from './types';
 
 type SidebarState = 'collapsed' | 'normal' | 'expanded';
 type ScreenSize = 'mobile' | 'tablet' | 'desktop';
@@ -147,7 +147,7 @@ function App() {
     };
 
     // Toolbar handlers
-    const handleToolChange = (tool: 'select' | 'clone-plant' | 'delete') => {
+    const handleToolChange = (tool: Tool) => {
         if (tool === 'clone-plant') {
             handleClonePlant();
             // Volver a select después de clonar

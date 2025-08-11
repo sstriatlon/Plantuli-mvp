@@ -18,9 +18,7 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
   const { plant, position, scale } = placedPlant;
   const groupRef = useRef<Konva.Group>(null);
   const [plantImage, setPlantImage] = useState<HTMLImageElement | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
   const [dragStartTime, setDragStartTime] = useState<number | null>(null);
-  const [dragStartPosition, setDragStartPosition] = useState<{ x: number; y: number } | null>(null);
   
   // Convert real-world coordinates to canvas pixels
   const canvasX = position.x * pixelsPerMeter;
@@ -86,7 +84,7 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
     
     // Mark the event as handled for Stage
     if (e.evt) {
-      e.evt._handled = true;
+      (e.evt as any)._handled = true;
     }
     
     // IMMEDIATE SELECTION - select the plant right away on mouse down
@@ -97,21 +95,18 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
     // Record drag start time and position for click vs drag detection
     const currentTime = Date.now();
     const stage = e.target.getStage();
-    const pointer = stage.getPointerPosition();
-    
-    setDragStartTime(currentTime);
-    setDragStartPosition(pointer ? { x: pointer.x, y: pointer.y } : null);
+    if (stage) {
+      setDragStartTime(currentTime);
+    }
     
     console.log('🟣 Drag start recorded:', {
       time: currentTime,
-      position: pointer,
       plantName: plant.name
     });
   };
 
   const handleDragStart = () => {
     console.log('🟣 Drag start on plant:', plant.name);
-    setIsDragging(true);
     onDragStart?.(placedPlant.instanceId);
   };
 
@@ -121,9 +116,6 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
     // Stop event propagation
     e.cancelBubble = true;
     e.evt?.stopPropagation();
-    
-    // Reset dragging state
-    setIsDragging(false);
     
     const group = e.target;
     const currentCanvasX = group.x();
@@ -173,7 +165,6 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
     
     // Reset tracking variables
     setDragStartTime(null);
-    setDragStartPosition(null);
   };
   
   console.log('🟨 Rendering PlacedPlantCanvas:', {

@@ -65,22 +65,18 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     
     e.evt.preventDefault();
     
-    // Detectar si es touch (pinch-to-zoom) o mouse wheel
-    const isTouchEvent = e.evt.touches || e.evt.targetTouches;
-    
-    if (isTouchEvent) {
-      // Manejar pinch-to-zoom para móvil/tablet
-      handlePinchZoom(e);
-      return;
-    }
+    // Para wheel events, proceder directamente con el zoom del mouse
     
     // Mouse wheel zoom existente
     const scaleBy = 1.08;
     const stage = e.target.getStage();
+    if (!stage) return;
+    
     const oldScale = stage.scaleX();
     
     // Get mouse position relative to the stage
     const pointer = stage.getPointerPosition();
+    if (!pointer) return;
     
     // Calculate the mouse position in the coordinate system before zoom
     const mousePointTo = {
@@ -126,7 +122,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     if (e.evt.button !== 0) return;
     
     // Check if the event was already handled by a plant
-    if (e.evt._handled) {
+    if ((e.evt as any)._handled) {
       console.log('🚫 Event already handled by plant - ignoring Stage mouseDown');
       return;
     }
@@ -134,6 +130,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     // Don't start pan if clicking on a draggable plant
     const target = e.target;
     const stage = e.target.getStage();
+    if (!stage) return;
     
     console.log('🟡 Stage mouseDown debug:', {
       targetType: target.constructor.name,
@@ -177,7 +174,9 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
       onPlantSelect?.('');  // Clear selection by passing empty string
     }
     
-    stage.container().style.cursor = 'grabbing';
+    if (stage.container()) {
+      stage.container().style.cursor = 'grabbing';
+    }
     
     const startPos = {
       x: e.evt.clientX - viewport.pan.x,
@@ -197,7 +196,9 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     };
 
     const handleMouseUp = () => {
-      stage.container().style.cursor = 'grab';
+      if (stage && stage.container()) {
+        stage.container().style.cursor = 'grab';
+      }
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
@@ -239,6 +240,8 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
       // Calcular zoom
       const scaleChange = touchDistance / lastTouchDistance;
       const stage = e.target.getStage();
+      if (!stage) return;
+      
       const oldScale = stage.scaleX();
       let newScale = oldScale * scaleChange;
 
