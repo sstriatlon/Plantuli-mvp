@@ -1,0 +1,45 @@
+name: Deploy React App to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: List directories
+      run: ls -la
+      
+    - name: Check if directory exists
+      run: |
+        if [ -d "./plantuli.client" ]; then
+          echo "Directory exists"
+          ls -la ./plantuli.client
+        else
+          echo "Directory does not exist"
+          echo "Available directories:"
+          ls -la
+        fi
+        
+    - name: Install dependencies
+      working-directory: ./Plantuli/plantuli.client
+      run: npm install
+        
+    - name: Build React app
+      working-directory: ./Plantuli/plantuli.client
+      run: npm run build
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./Plantuli/plantuli.client/build
