@@ -5,7 +5,13 @@
       "Bash(set DEV_SERVER_PORT=3000)",
       "Bash(npm run dev:*)",
       "Bash(npm run lint)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(claude config show)",
+      "Bash(claude config --help)",
+      "Bash(dir)",
+      "Bash(cat:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": []
   }

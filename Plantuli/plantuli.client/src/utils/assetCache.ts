@@ -69,8 +69,8 @@ class AssetCacheManager {
    * Configuración adaptativa según capabilities del device
    */
   private getAdaptiveConfig(): CacheConfig {
-    const memory = (navigator as any).deviceMemory || 4;
-    const connection = (navigator as any).connection;
+    const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory || 4;
+    const connection = (navigator as Navigator & { connection?: { effectiveType?: string } }).connection;
     const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     return {
@@ -90,7 +90,7 @@ class AssetCacheManager {
     if (!this.config.persistentCacheEnabled) return;
 
     try {
-      const cache = await caches.open('plantuli-assets-v1');
+      await caches.open('plantuli-assets-v1');
       console.log('✅ Cache persistente inicializado');
       
       // Precargar assets críticos en background
@@ -112,7 +112,7 @@ class AssetCacheManager {
     if (cached && !this.isExpired(cached)) {
       this.updateAccessStats(cached);
       this.metrics.cacheHits++;
-      this.updateMetrics(performance.now() - startTime, true);
+      this.updateMetrics(performance.now() - startTime);
       return cached.data;
     }
 
@@ -121,7 +121,7 @@ class AssetCacheManager {
       const persistentData = await this.getFromPersistentCache(url);
       if (persistentData) {
         await this.set(url, persistentData, priority);
-        this.updateMetrics(performance.now() - startTime, true);
+        this.updateMetrics(performance.now() - startTime);
         return persistentData;
       }
     }
@@ -131,14 +131,14 @@ class AssetCacheManager {
       const data = await this.loadFromNetwork(url);
       if (data) {
         await this.set(url, data, priority);
-        this.updateMetrics(performance.now() - startTime, false);
+        this.updateMetrics(performance.now() - startTime);
         return data;
       }
     } catch (error) {
       console.warn(`❌ Error loading asset ${url}:`, error);
     }
 
-    this.updateMetrics(performance.now() - startTime, false);
+    this.updateMetrics(performance.now() - startTime);
     return null;
   }
 
@@ -236,9 +236,10 @@ class AssetCacheManager {
     // Load con delay para no saturar la red
     for (let i = 0; i < loadOrder.length; i++) {
       const { url, priority: assetPriority } = loadOrder[i];
+      const validPriority = assetPriority as AssetCacheEntry['priority'];
       
       setTimeout(() => {
-        this.get(url, assetPriority);
+        this.get(url, validPriority);
       }, i * 50); // 50ms entre cada asset
     }
 
@@ -327,7 +328,7 @@ class AssetCacheManager {
     entry.lastAccessed = Date.now();
   }
 
-  private updateMetrics(loadTime: number, isHit: boolean): void {
+  private updateMetrics(loadTime: number): void {
     this.metrics.avgLoadTime = (this.metrics.avgLoadTime + loadTime) / 2;
     this.metrics.hitRate = this.metrics.cacheHits / this.metrics.totalRequests;
     this.metrics.memoryUsage = this.currentSize;
@@ -452,6 +453,6 @@ export const assetCache = new AssetCacheManager();
 
 // Auto-setup en desarrollo
 if (process.env.NODE_ENV === 'development') {
-  (window as any).assetCache = assetCache;
+  (window as Window & { assetCache?: AssetCacheManager }).assetCache = assetCache;
   console.log('🚀 Asset Cache Manager inicializado');
 }

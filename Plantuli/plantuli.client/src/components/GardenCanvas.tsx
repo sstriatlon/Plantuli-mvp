@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { useDroppable } from '@dnd-kit/core';
 import { Stage, Layer, Rect, Line } from 'react-konva';
+import type { KonvaEventObject } from 'konva/lib/Node';
 import { Rulers } from './Rulers';
 import { PlacedPlantCanvas } from './PlacedPlantCanvas';
 import { SelectionHighlight } from './SelectionHighlight';
@@ -54,7 +55,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     return () => window.removeEventListener('resize', updateDimensions);
   }, [onCanvasPositionChange]);
 
-  const handleWheel = (e: any) => {
+  const handleWheel = (e: KonvaEventObject<WheelEvent>) => {
     // CRITICAL: If a plant is being dragged, completely ignore zoom
     if (draggingPlantId) {
       console.log('🚫 Plant is being dragged - ignoring wheel/zoom');
@@ -89,7 +90,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
 
     // Determine new scale with smooth stepping
     const direction = e.evt.deltaY > 0 ? -1 : 1;
-    let newScale = direction > 0 ? oldScale * scaleBy : oldScale / scaleBy;
+    const newScale = direction > 0 ? oldScale * scaleBy : oldScale / scaleBy;
     
     // Apply zoom limits with smooth clamping
     const clampedScale = Math.max(viewport.bounds.minZoom, Math.min(viewport.bounds.maxZoom, newScale));
@@ -114,7 +115,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     });
   };
 
-  const handleMouseDown = (e: any) => {
+  const handleMouseDown = (e: KonvaEventObject<MouseEvent>) => {
     // CRITICAL: If a plant is being dragged, completely ignore Stage mouse events
     if (draggingPlantId) {
       console.log('🚫 Plant is being dragged - ignoring Stage mouseDown');
@@ -227,7 +228,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     );
   };
 
-  const handlePinchZoom = (e: any) => {
+  const handlePinchZoom = (e: KonvaEventObject<TouchEvent>) => {
     const touches = e.evt.touches;
     if (touches.length !== 2) return;
 
@@ -267,7 +268,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     setLastTouchDistance(touchDistance);
   };
 
-  const handleTouchStart = (e: any) => {
+  const handleTouchStart = (e: KonvaEventObject<TouchEvent>) => {
     const touches = e.evt.touches;
     if (touches.length === 2) {
       setLastTouchCenter(getTouchCenter(touches));
@@ -278,7 +279,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     }
   };
 
-  const handleTouchEnd = (e: any) => {
+  const handleTouchEnd = (e: KonvaEventObject<TouchEvent>) => {
     const touches = e.evt.touches;
     if (touches.length < 2) {
       setLastTouchCenter(null);

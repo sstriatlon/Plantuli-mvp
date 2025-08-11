@@ -48,7 +48,7 @@ export async function saveGardenNative(
         };
 
         // Mostrar diálogo nativo "Guardar como..."
-        const fileHandle = await (window as any).showSaveFilePicker(options);
+        const fileHandle = await (window as Window & { showSaveFilePicker?: (options: any) => Promise<any> }).showSaveFilePicker?.(options);
         
         // Crear archivo de jardín
         const gardenData = createGardenFile(
@@ -67,14 +67,14 @@ export async function saveGardenNative(
             fileName: fileHandle.name 
         };
 
-    } catch (error: any) {
-        if (error.name === 'AbortError') {
+    } catch (error: unknown) {
+        if (error instanceof Error && error.name === 'AbortError') {
             return { success: false, error: 'Guardado cancelado por el usuario' };
         }
         
         return { 
             success: false, 
-            error: `Error al guardar: ${error.message || 'Error desconocido'}` 
+            error: `Error al guardar: ${error instanceof Error ? error.message : 'Error desconocido'}` 
         };
     }
 }
@@ -102,7 +102,7 @@ export async function loadGardenNative(): Promise<{
         ];
 
         // Mostrar diálogo nativo "Abrir archivo..."
-        const [fileHandle] = await (window as any).showOpenFilePicker({
+        const [fileHandle] = await (window as Window & { showOpenFilePicker?: (options: any) => Promise<any[]> }).showOpenFilePicker?.({
             types: options,
             multiple: false
         });
@@ -115,7 +115,7 @@ export async function loadGardenNative(): Promise<{
         let gardenData: SavedGarden;
         try {
             gardenData = JSON.parse(contents);
-        } catch (parseError) {
+        } catch {
             return { 
                 success: false, 
                 error: 'El archivo no tiene un formato válido de jardín Plantuli' 
@@ -136,14 +136,14 @@ export async function loadGardenNative(): Promise<{
             fileName: file.name
         };
 
-    } catch (error: any) {
-        if (error.name === 'AbortError') {
+    } catch (error: unknown) {
+        if (error instanceof Error && error.name === 'AbortError') {
             return { success: false, error: 'Carga cancelada por el usuario' };
         }
         
         return { 
             success: false, 
-            error: `Error al cargar: ${error.message || 'Error desconocido'}` 
+            error: `Error al cargar: ${error instanceof Error ? error.message : 'Error desconocido'}` 
         };
     }
 }
@@ -182,10 +182,10 @@ export function downloadGardenFile(
             fileName: `${gardenData.name}.plantuli` 
         };
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         return { 
             success: false, 
-            error: `Error al descargar: ${error.message || 'Error desconocido'}` 
+            error: `Error al descargar: ${error instanceof Error ? error.message : 'Error desconocido'}` 
         };
     }
 }
@@ -230,10 +230,10 @@ export function loadGardenFileInput(): Promise<{
                     fileName: file.name
                 });
 
-            } catch (error: any) {
+            } catch (error: unknown) {
                 resolve({ 
                     success: false, 
-                    error: `Error al leer archivo: ${error.message || 'Error desconocido'}` 
+                    error: `Error al leer archivo: ${error instanceof Error ? error.message : 'Error desconocido'}` 
                 });
             } finally {
                 document.body.removeChild(input);

@@ -25,18 +25,6 @@ export const preloadPlantAssets = async (plants: Plant[]): Promise<void[]> => {
   return Promise.all(promises).then(() => []);
 };
 
-/**
- * @deprecated Use assetCache.get() instead
- * Carga una imagen y retorna una promesa
- */
-const loadImage = (src: string): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve();
-    img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
-    img.src = src;
-  });
-};
 
 /**
  * Verifica si una planta tiene assets disponibles

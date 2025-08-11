@@ -71,6 +71,7 @@ export const getMigrationStats = (plants: Plant[]) => {
  */
 export const cleanLegacyData = (plants: Plant[]): Omit<Plant, 'icon'>[] => {
   return plants.map(plant => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { icon, ...cleanPlant } = plant;
     return cleanPlant;
   });

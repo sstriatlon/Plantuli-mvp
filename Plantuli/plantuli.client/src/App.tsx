@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { DndContext, DragOverlay, PointerSensor, KeyboardSensor, TouchSensor, useSensor, useSensors, closestCenter, type DragEndEvent, type DragStartEvent } from '@dnd-kit/core';
-import { ChevronLeft, ChevronRight, Maximize2, Grid3X3, Ruler, Eye, EyeOff, ChevronDown } from 'lucide-react';
+import { Eye, EyeOff, ChevronDown } from 'lucide-react';
 import { GardenCanvas } from './components/GardenCanvas';
 import { PlantCatalog } from './components/PlantCatalog';
 import { CacheDebugPanel } from './components/CacheDebugPanel';
@@ -14,7 +14,6 @@ import { useSwipe } from './hooks/useSwipe';
 import { mockPlants } from './data/mockPlants';
 import { runAssetTest } from './utils/assetTester';
 import { assetCache } from './utils/assetCache';
-import { saveGarden, listGardens, loadGarden } from './utils/gardenStorage';
 import { 
     saveGardenNative, 
     loadGardenNative, 
@@ -54,7 +53,7 @@ function App() {
     const [canvasRect, setCanvasRect] = useState<DOMRect | null>(null);
     
     // Toast notifications
-    const { toasts, showSuccess, showError, showWarning, closeToast } = useToast();
+    const { toasts, showSuccess, showError, closeToast } = useToast();
     
     // Swipe gestures para cerrar sidebar en tablet
     const swipeHandlers = useSwipe({
@@ -268,10 +267,10 @@ function App() {
                 }
                 console.error('❌ Error al guardar jardín:', result.error);
             }
-        } catch (error: any) {
+        } catch (error: unknown) {
             showError(
                 'Error al guardar', 
-                `Error inesperado: ${error.message || 'Error desconocido'}`
+                `Error inesperado: ${error instanceof Error ? error.message : 'Error desconocido'}`
             );
             console.error('❌ Error inesperado al guardar:', error);
         }
@@ -314,10 +313,10 @@ function App() {
                 }
                 console.error('❌ Error al cargar jardín:', result.error);
             }
-        } catch (error: any) {
+        } catch (error: unknown) {
             showError(
                 'Error al cargar', 
-                `Error inesperado: ${error.message || 'Error desconocido'}`
+                `Error inesperado: ${error instanceof Error ? error.message : 'Error desconocido'}`
             );
             console.error('❌ Error inesperado al cargar:', error);
         }
@@ -646,16 +645,6 @@ function App() {
                 return sidebarState === 'expanded' ? '450px' : '320px';
             default:
                 return '320px';
-        }
-    };
-
-    const toggleSidebar = () => {
-        if (sidebarState === 'collapsed') {
-            setSidebarState('normal');
-        } else if (sidebarState === 'normal') {
-            setSidebarState(screenSize === 'mobile' ? 'collapsed' : 'expanded');
-        } else {
-            setSidebarState(screenSize === 'mobile' ? 'normal' : 'collapsed');
         }
     };
 

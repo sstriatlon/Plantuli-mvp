@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Circle, Group, Image } from 'react-konva';
+import type { KonvaEventObject } from 'konva/lib/Node';
 import Konva from 'konva';
 import type { PlacedPlant } from '../types';
 
@@ -76,7 +77,7 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
     }
   }, [showConfirmationEffect]);
 
-  const handleMouseDown = (e: any) => {
+  const handleMouseDown = (e: KonvaEventObject<MouseEvent>) => {
     console.log('🟣 Mouse down on plant:', plant.name);
     
     // Stop event propagation to prevent Stage from handling it
@@ -108,13 +109,13 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
     });
   };
 
-  const handleDragStart = (e: any) => {
+  const handleDragStart = () => {
     console.log('🟣 Drag start on plant:', plant.name);
     setIsDragging(true);
     onDragStart?.(placedPlant.instanceId);
   };
 
-  const handleDragEnd = (e: any) => {
+  const handleDragEnd = (e: KonvaEventObject<DragEvent>) => {
     console.log('🟣 Drag end on plant:', plant.name);
     
     // Stop event propagation

@@ -112,7 +112,7 @@ export function PlantCatalog({ onPlantSelect, sidebarExpanded = false }: PlantCa
                 ].map(({ value, label, icon }) => (
                   <button
                     key={value}
-                    onClick={() => setCategoryFilter(value as any)}
+                    onClick={() => setCategoryFilter(value as Plant['category'] | 'all')}
                     className={`
                       px-2 py-1.5 text-xs rounded-md transition-all flex items-center gap-1
                       ${value === categoryFilter
@@ -144,7 +144,7 @@ export function PlantCatalog({ onPlantSelect, sidebarExpanded = false }: PlantCa
                 ].map(({ value, label }) => (
                   <button
                     key={value}
-                    onClick={() => setTypeFilter(value as any)}
+                    onClick={() => setTypeFilter(value as Plant['type'] | 'all')}
                     className={`
                       px-2 py-1.5 text-xs rounded-md transition-all
                       ${value === typeFilter

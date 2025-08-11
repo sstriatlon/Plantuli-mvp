@@ -12,16 +12,18 @@ import {
     RotateCcw 
 } from 'lucide-react';
 
+import type { Tool } from '../types';
+
 interface ToolbarProps {
     className?: string;
     screenSize?: 'mobile' | 'tablet' | 'desktop';
     // Estado actual
-    activeTool: 'select' | 'clone-plant' | 'delete';
+    activeTool: Tool;
     showGrid: boolean;
     showRulers: boolean;
     hasSelectedPlant: boolean;
     // Handlers
-    onToolChange: (tool: 'select' | 'clone-plant' | 'delete') => void;
+    onToolChange: (tool: Tool) => void;
     onZoomIn: () => void;
     onZoomOut: () => void;
     onToggleGrid: () => void;

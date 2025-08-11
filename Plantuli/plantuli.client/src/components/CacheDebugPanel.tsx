@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Activity, Database, Clock, TrendingUp, X, Eye, EyeOff, Zap } from 'lucide-react';
+import { Activity, Database, Clock, TrendingUp, X, EyeOff, Zap } from 'lucide-react';
 import { useAssetCacheMetrics } from '../hooks/useAssetCacheMetrics';
 import { useMigrationMode } from '../hooks/useMigrationMode';
 import { mockPlants } from '../data/mockPlants';
