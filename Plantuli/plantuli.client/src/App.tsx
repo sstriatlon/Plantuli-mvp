@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { DndContext, DragOverlay, PointerSensor, KeyboardSensor, TouchSensor, useSensor, useSensors, closestCenter, type DragEndEvent, type DragStartEvent } from '@dnd-kit/core';
+import { DndContext, DragOverlay, PointerSensor, KeyboardSensor, TouchSensor, useSensor, useSensors, closestCenter, type DragEndEvent, type DragStartEvent, type Modifier } from '@dnd-kit/core';
 import { Eye, EyeOff, ChevronDown } from 'lucide-react';
 import { GardenCanvas } from './components/GardenCanvas';
 import { PlantCatalog } from './components/PlantCatalog';
@@ -80,6 +80,51 @@ function App() {
     });
     
     const sensors = useSensors(pointerSensor, keyboardSensor, touchSensor);
+    // Center the drag overlay under the cursor regardless of initial grab offset
+    const snapCenterToCursor: Modifier = ({ transform, overlayNodeRect, activeNodeRect, activatorEvent }) => {
+        const overlayW = overlayNodeRect?.width ?? 0;
+        const overlayH = overlayNodeRect?.height ?? 0;
+
+        // Compute initial pointer offset within the active node at activation time
+    let offsetX = 0;
+    let offsetY = 0;
+
+        if (activatorEvent && activeNodeRect) {
+            const isPointer = typeof PointerEvent !== 'undefined' && activatorEvent instanceof PointerEvent;
+            const isMouse = typeof MouseEvent !== 'undefined' && activatorEvent instanceof MouseEvent;
+            const isTouch = typeof TouchEvent !== 'undefined' && activatorEvent instanceof TouchEvent;
+
+            if (isPointer || isMouse) {
+                const evt = activatorEvent as PointerEvent | MouseEvent;
+                offsetX = evt.clientX - activeNodeRect.left;
+                offsetY = evt.clientY - activeNodeRect.top;
+            } else if (isTouch) {
+                const tEvt = activatorEvent as TouchEvent;
+                const touch = tEvt.touches?.[0] ?? tEvt.changedTouches?.[0];
+                if (touch) {
+                    offsetX = touch.clientX - activeNodeRect.left;
+                    offsetY = touch.clientY - activeNodeRect.top;
+                }
+            }
+        }
+
+        // Fallback: if we couldn't read the event offset, assume grab happened at the center of the active node
+        if ((offsetX === 0 && offsetY === 0) && activeNodeRect) {
+            offsetX = activeNodeRect.width / 2;
+            offsetY = activeNodeRect.height / 2;
+        }
+
+        // Position overlay so its center sits under the pointer.
+        // Default: transform = pointer - initialOffset.
+        // Desired top-left: pointer - overlay/2.
+        // Therefore: transform + initialOffset - overlay/2.
+        return {
+            ...transform,
+            x: transform.x + offsetX - overlayW / 2,
+            y: transform.y + offsetY - overlayH / 2,
+        };
+    };
+
     
     const [appState, setAppState] = useState<AppState>({
         placedPlants: [],
@@ -920,6 +965,7 @@ function App() {
             {/* Drag Overlay - renders outside normal DOM flow */}
             <DragOverlay 
                 dropAnimation={null}
+                modifiers={[snapCenterToCursor]}
             >
                 {activeDragItem ? (
                     <PlantDragPreview plant={activeDragItem} />
