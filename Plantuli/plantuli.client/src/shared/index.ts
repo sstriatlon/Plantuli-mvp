@@ -7,3 +7,4 @@ export * from './utils/coordinateHelpers';
 export * from './constants';
 export * from './types';
 export * from './components/Modal';
+export { CacheDebugPanel } from './components/CacheDebugPanel';

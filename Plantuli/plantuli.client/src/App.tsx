@@ -3,7 +3,7 @@ import { DndContext, DragOverlay, PointerSensor, KeyboardSensor, TouchSensor, us
 import { Eye, EyeOff, ChevronDown } from 'lucide-react';
 import { GardenCanvas } from './features/garden-canvas';
 import { PlantCatalog } from './features/plant-management';
-import { CacheDebugPanel } from './components/CacheDebugPanel';
+import { CacheDebugPanel } from './shared/components/CacheDebugPanel';
 import { PlantDragPreview } from './features/drag-and-drop';
 import { Header, Toolbar, MobileToolbar } from './features/layout';
 import { ToastContainer, useToast } from './features/notifications';
