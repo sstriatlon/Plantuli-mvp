@@ -37,11 +37,6 @@ import {
     CLONE_MAX_X,
     CLONE_MAX_Y,
     PLANT_CONFIRMATION_DURATION_MS,
-    CANVAS_WIDTH_METERS,
-    CANVAS_HEIGHT_METERS,
-    POSITION_CLAMP_TOLERANCE,
-    PIXELS_PER_METER,
-    DEFAULT_PLANT_POSITION_METERS,
     SIDEBAR_COLLAPSED_WIDTH,
     SIDEBAR_MOBILE_EXPANDED_WIDTH,
     SIDEBAR_MOBILE_NORMAL_WIDTH,
@@ -50,6 +45,7 @@ import {
     SIDEBAR_DESKTOP_EXPANDED_WIDTH,
     SIDEBAR_DESKTOP_NORMAL_WIDTH
 } from './constants';
+import { convertScreenToRealWorld } from './utils/coordinateHelpers';
 import type { AppState, Viewport, LayerVisibility, Plant, Tool } from './types';
 
 type SidebarState = 'collapsed' | 'normal' | 'expanded';
@@ -502,36 +498,19 @@ function App() {
                 const finalMouseX = startEvent.clientX + deltaX;
                 const finalMouseY = startEvent.clientY + deltaY;
                 
-                let canvasX, canvasY;
-                
-                if (canvasRect) {
-                    // Convert screen coordinates to canvas-relative coordinates
-                    const canvasRelativeX = finalMouseX - canvasRect.left;
-                    const canvasRelativeY = finalMouseY - canvasRect.top;
-                    
-                    // Convert from viewport coordinates to content coordinates
-                    // Account for the pan offset and zoom
-                    canvasX = (canvasRelativeX - appState.viewport.pan.x) / appState.viewport.zoom;
-                    canvasY = (canvasRelativeY - appState.viewport.pan.y) / appState.viewport.zoom;
-                } else {
-                    // Fallback: use a default position if canvas rect not available
-                    canvasX = DEFAULT_PLANT_POSITION_METERS * PIXELS_PER_METER;
-                    canvasY = DEFAULT_PLANT_POSITION_METERS * PIXELS_PER_METER;
-                }
-                
-                const realX = canvasX / 100;
-                const realY = canvasY / 100;
-                
-                // Validate that the plant is within canvas bounds
-                const canvasBounds = { width: CANVAS_WIDTH_METERS, height: CANVAS_HEIGHT_METERS };
-                const clampedRealX = Math.max(0, Math.min(canvasBounds.width - POSITION_CLAMP_TOLERANCE, realX));
-                const clampedRealY = Math.max(0, Math.min(canvasBounds.height - POSITION_CLAMP_TOLERANCE, realY));
+                // Convert screen coordinates to real-world coordinates
+                const position = convertScreenToRealWorld({
+                    screenX: finalMouseX,
+                    screenY: finalMouseY,
+                    canvasRect,
+                    viewport: appState.viewport
+                });
                 
                 const instanceId = crypto.randomUUID();
                 const newPlacedPlant = {
                     instanceId,
                     plant: plantData.plant,
-                    position: { x: clampedRealX, y: clampedRealY },
+                    position,
                     rotation: 0,
                     scale: 1,
                     placedAt: new Date()
@@ -555,33 +534,23 @@ function App() {
                 const finalMouseX = startEvent.clientX + deltaX;
                 const finalMouseY = startEvent.clientY + deltaY;
                 
-                if (canvasRect) {
-                    // Convert screen coordinates to canvas-relative coordinates
-                    const canvasRelativeX = finalMouseX - canvasRect.left;
-                    const canvasRelativeY = finalMouseY - canvasRect.top;
-                    
-                    // Convert from viewport coordinates to content coordinates
-                    const canvasX = (canvasRelativeX - appState.viewport.pan.x) / appState.viewport.zoom;
-                    const canvasY = (canvasRelativeY - appState.viewport.pan.y) / appState.viewport.zoom;
-                    
-                    const realX = canvasX / 100;
-                    const realY = canvasY / 100;
-                    
-                    // Validate that the plant is within canvas bounds
-                    const canvasBounds = { width: CANVAS_WIDTH_METERS, height: CANVAS_HEIGHT_METERS };
-                    const clampedRealX = Math.max(0, Math.min(canvasBounds.width - POSITION_CLAMP_TOLERANCE, realX));
-                    const clampedRealY = Math.max(0, Math.min(canvasBounds.height - POSITION_CLAMP_TOLERANCE, realY));
-                    
-                    // Update existing plant position
-                    setAppState(prev => ({
-                        ...prev,
-                        placedPlants: prev.placedPlants.map(plant => 
-                            plant.instanceId === plantData.placedPlant.instanceId
-                                ? { ...plant, position: { x: clampedRealX, y: clampedRealY } }
-                                : plant
-                        )
-                    }));
-                }
+                // Convert screen coordinates to real-world coordinates
+                const position = convertScreenToRealWorld({
+                    screenX: finalMouseX,
+                    screenY: finalMouseY,
+                    canvasRect,
+                    viewport: appState.viewport
+                });
+                
+                // Update existing plant position
+                setAppState(prev => ({
+                    ...prev,
+                    placedPlants: prev.placedPlants.map(plant => 
+                        plant.instanceId === plantData.placedPlant.instanceId
+                            ? { ...plant, position }
+                            : plant
+                    )
+                }));
             }
         }
         
