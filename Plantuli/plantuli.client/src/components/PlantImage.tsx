@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import type { Plant } from '../types';
 import { assetCache } from '../utils/assetCache';
+import { logger } from '../utils/logger';
 
 interface PlantImageProps {
   plant: Plant;
@@ -76,7 +77,7 @@ export function PlantImage({
           setImageError(true);
         }
       } catch (error) {
-        console.warn(`Failed to load ${variant} for ${plant.name}:`, error);
+        logger.warn(`Failed to load ${variant} for ${plant.name}:`, error);
         setImageError(true);
       }
     };

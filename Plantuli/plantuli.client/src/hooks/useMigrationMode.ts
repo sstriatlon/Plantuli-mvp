@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getMigrationStats, cleanLegacyData } from '../utils/plantMigration';
+import { logger } from '../utils/logger';
 import type { Plant } from '../types';
 
 export interface MigrationMode {
@@ -23,22 +24,22 @@ export function useMigrationMode(plants: Plant[]): MigrationMode & {
   useEffect(() => {
     // Auto-enable si ya no hay dependencia de emojis
     if (stats.migrationComplete && stats.validationPassed) {
-      console.log('✅ Migration complete! All plants have proper assets.');
+      logger.log('Migration complete! All plants have proper assets.');
     }
   }, [stats]);
 
   const enableMigrationMode = () => {
     if (stats.validationPassed) {
       setEnabled(true);
-      console.log('🚀 Migration mode enabled - running without emoji fallbacks');
+      logger.log('Migration mode enabled - running without emoji fallbacks');
     } else {
-      console.warn('⚠️ Cannot enable migration mode - some plants lack proper assets');
+      logger.warn('Cannot enable migration mode - some plants lack proper assets');
     }
   };
 
   const disableMigrationMode = () => {
     setEnabled(false);
-    console.log('🔄 Migration mode disabled - emoji fallbacks restored');
+    logger.log('Migration mode disabled - emoji fallbacks restored');
   };
 
   return {

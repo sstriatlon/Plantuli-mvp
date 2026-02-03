@@ -1,4 +1,5 @@
 import type { PlacedPlant, Viewport } from '../types';
+import { logger } from './logger';
 
 // Interfaces para el sistema de persistencia
 export interface SavedGarden {
@@ -62,7 +63,7 @@ function getStoredGardens(): SavedGarden[] {
         
         return parsed.filter(isValidGarden);
     } catch (error) {
-        console.error('Error reading gardens from localStorage:', error);
+        logger.error('Error reading gardens from localStorage:', error);
         return [];
     }
 }
@@ -72,7 +73,7 @@ function saveGardensToStorage(gardens: SavedGarden[]): boolean {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(gardens));
         return true;
     } catch (error) {
-        console.error('Error saving gardens to localStorage:', error);
+        logger.error('Error saving gardens to localStorage:', error);
         return false;
     }
 }

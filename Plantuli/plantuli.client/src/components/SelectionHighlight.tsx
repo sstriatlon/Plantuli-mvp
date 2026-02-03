@@ -22,15 +22,6 @@ export function SelectionHighlight({ placedPlant, pixelsPerMeter = 100 }: Select
   const highlightRadiusX = radiusX + padding;
   const highlightRadiusY = radiusY + padding;
   
-  console.log('🟢 SelectionHighlight rendering (Ellipse):', {
-    plantName: plant.name,
-    instanceId: placedPlant.instanceId,
-    position,
-    canvasCoords: { x: canvasX, y: canvasY },
-    radii: { x: highlightRadiusX, y: highlightRadiusY },
-    isVisible: true
-  });
-  
   return (
     <Ellipse
       x={canvasX}

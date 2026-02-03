@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Circle, Group, Image } from 'react-konva';
 import type { KonvaEventObject } from 'konva/lib/Node';
 import Konva from 'konva';
+import { logger } from '../utils/logger';
 import type { PlacedPlant } from '../types';
 
 interface PlacedPlantCanvasProps {
@@ -37,7 +38,7 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
         setPlantImage(img);
       };
       img.onerror = () => {
-        console.warn(`Failed to load plant image: ${plant.assets.sprite}`);
+        logger.warn(`Failed to load plant image: ${plant.assets.sprite}`);
         setPlantImage(null);
       };
       img.src = plant.assets.sprite;
@@ -76,8 +77,6 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
   }, [showConfirmationEffect]);
 
   const handleMouseDown = (e: KonvaEventObject<MouseEvent>) => {
-    console.log('🟣 Mouse down on plant:', plant.name);
-    
     // Stop event propagation to prevent Stage from handling it
     e.cancelBubble = true;
     e.evt?.stopPropagation();
@@ -89,7 +88,6 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
     
     // IMMEDIATE SELECTION - select the plant right away on mouse down
     // Always select, even if already selected (to ensure consistent state)
-    console.log('🔵 Immediate plant selection on mouseDown:', placedPlant.instanceId, 'isCurrentlySelected:', isSelected);
     onSelect?.(placedPlant.instanceId);
     
     // Record drag start time and position for click vs drag detection
@@ -98,21 +96,13 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
     if (stage) {
       setDragStartTime(currentTime);
     }
-    
-    console.log('🟣 Drag start recorded:', {
-      time: currentTime,
-      plantName: plant.name
-    });
   };
 
   const handleDragStart = () => {
-    console.log('🟣 Drag start on plant:', plant.name);
     onDragStart?.(placedPlant.instanceId);
   };
 
   const handleDragEnd = (e: KonvaEventObject<DragEvent>) => {
-    console.log('🟣 Drag end on plant:', plant.name);
-    
     // Stop event propagation
     e.cancelBubble = true;
     e.evt?.stopPropagation();
@@ -133,24 +123,12 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
     // Additional check: if drag time was very short and minimal movement, treat as click
     const isQuickClick = timeDiff < 150 && !actuallyMoved;
     
-    console.log('🟣 Enhanced movement check:', {
-      original: { x: canvasX, y: canvasY },
-      current: { x: currentCanvasX, y: currentCanvasY },
-      delta: { x: deltaX, y: deltaY },
-      timeDiff,
-      actuallyMoved,
-      isQuickClick,
-      finalDecision: actuallyMoved && !isQuickClick ? 'drag' : 'click'
-    });
-    
     if (actuallyMoved && !isQuickClick) {
       // Real drag - update position
       const newRealX = currentCanvasX / pixelsPerMeter;
       const newRealY = currentCanvasY / pixelsPerMeter;
       
       onDragEnd?.(placedPlant.instanceId, { x: newRealX, y: newRealY });
-      
-      console.log('🟣 Plant dragged to new position');
     } else {
       // Just a click - reset position and maintain selection
       group.x(canvasX);
@@ -158,23 +136,11 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
       
       // Call onDragEnd with original position to clear dragging state
       onDragEnd?.(placedPlant.instanceId, { x: position.x, y: position.y });
-      
-      // Selection was already handled in handleMouseDown, no need to call again
-      console.log('🔵 Plant clicked (selection already handled in mouseDown):', placedPlant.instanceId);
     }
     
     // Reset tracking variables
     setDragStartTime(null);
   };
-  
-  console.log('🟨 Rendering PlacedPlantCanvas:', {
-    plantName: plant.name,
-    instanceId: placedPlant.instanceId,
-    realPosition: position,
-    canvasPosition: { x: canvasX, y: canvasY },
-    draggable: true,
-    isVisible: canvasX >= -100 && canvasX <= 3000 && canvasY >= -100 && canvasY <= 2000
-  });
 
   return (
     <Group

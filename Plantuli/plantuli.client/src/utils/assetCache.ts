@@ -3,6 +3,8 @@
  * Implementa cache en memoria + persistente con prioridades dinámicas
  */
 
+import { logger } from './logger';
+
 export interface AssetCacheEntry {
   url: string;
   data: string | HTMLImageElement;
@@ -91,12 +93,12 @@ class AssetCacheManager {
 
     try {
       await caches.open('plantuli-assets-v1');
-      console.log('✅ Cache persistente inicializado');
+      logger.log('Cache persistente inicializado');
       
       // Precargar assets críticos en background
       this.preloadCriticalAssets();
     } catch (error) {
-      console.warn('⚠️ No se pudo inicializar cache persistente:', error);
+      logger.warn('No se pudo inicializar cache persistente:', error);
     }
   }
 
@@ -135,7 +137,7 @@ class AssetCacheManager {
         return data;
       }
     } catch (error) {
-      console.warn(`❌ Error loading asset ${url}:`, error);
+      logger.warn(`Error loading asset ${url}:`, error);
     }
 
     this.updateMetrics(performance.now() - startTime);
@@ -261,7 +263,7 @@ class AssetCacheManager {
         await this.preloadPlantAssets(plant.id, 'critical');
       }
     } catch (error) {
-      console.warn('⚠️ Error preloading critical assets:', error);
+      logger.warn('Error preloading critical assets:', error);
     }
   }
 
@@ -294,7 +296,7 @@ class AssetCacheManager {
       this.evictionCount++;
     }
 
-    console.log(`🗑️ Evicted ${freedSpace} bytes from cache`);
+    logger.debug(true, `Evicted ${freedSpace} bytes from cache`);
   }
 
   /**
@@ -369,7 +371,7 @@ class AssetCacheManager {
         this.usageStats = new Map(parsed);
       }
     } catch (error) {
-      console.warn('⚠️ Error loading usage stats:', error);
+      logger.warn('Error loading usage stats:', error);
     }
   }
 
@@ -378,7 +380,7 @@ class AssetCacheManager {
       const serialized = Array.from(this.usageStats.entries());
       localStorage.setItem('plantuli-usage-stats', JSON.stringify(serialized));
     } catch (error) {
-      console.warn('⚠️ Error saving usage stats:', error);
+      logger.warn('Error saving usage stats:', error);
     }
   }
 
@@ -388,7 +390,7 @@ class AssetCacheManager {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return await response.text();
     } catch (error) {
-      console.warn(`Network load failed for ${url}:`, error);
+      logger.warn(`Network load failed for ${url}:`, error);
       return null;
     }
   }
@@ -399,7 +401,7 @@ class AssetCacheManager {
       const response = await cache.match(url);
       return response ? await response.text() : null;
     } catch (error) {
-      console.warn('Error accessing persistent cache:', error);
+      logger.warn('Error accessing persistent cache:', error);
       return null;
     }
   }
@@ -410,7 +412,7 @@ class AssetCacheManager {
       const response = new Response(typeof data === 'string' ? data : data.src);
       await cache.put(url, response);
     } catch (error) {
-      console.warn('Error saving to persistent cache:', error);
+      logger.warn('Error saving to persistent cache:', error);
     }
   }
 
@@ -454,5 +456,5 @@ export const assetCache = new AssetCacheManager();
 // Auto-setup en desarrollo
 if (process.env.NODE_ENV === 'development') {
   (window as Window & { assetCache?: AssetCacheManager }).assetCache = assetCache;
-  console.log('🚀 Asset Cache Manager inicializado');
+  logger.log('Asset Cache Manager inicializado');
 }

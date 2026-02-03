@@ -1,5 +1,6 @@
 import type { Plant } from '../types';
 import { hasPlantAssets } from './plantAssets';
+import { logger } from './logger';
 
 interface AssetTestResult {
   plantId: string;
@@ -67,13 +68,13 @@ export const testPlantAssets = async (plant: Plant): Promise<AssetTestResult> =>
  */
 export const testAllPlantAssets = async (plants: Plant[]): Promise<AssetTestResult[]> => {
   if (!plants || !Array.isArray(plants)) {
-    console.warn('Invalid plants array provided to testAllPlantAssets');
+    logger.warn('Invalid plants array provided to testAllPlantAssets');
     return [];
   }
   
   const plantsWithAssets = plants.filter(hasPlantAssets);
   
-  console.log(`Testing assets for ${plantsWithAssets.length} plants...`);
+  logger.log(`Testing assets for ${plantsWithAssets.length} plants...`);
   
   const results = await Promise.all(
     plantsWithAssets.map(plant => testPlantAssets(plant))
@@ -93,15 +94,15 @@ export const testAllPlantAssets = async (plants: Plant[]): Promise<AssetTestResu
     !r.results.icon && !r.results.sprite && !r.results.thumbnail
   ).length;
 
-  console.log(`Asset Test Results:`);
-  console.log(`✅ Fully working: ${successful}`);
-  console.log(`⚠️  Partial: ${partial}`);
-  console.log(`❌ Failed: ${failed}`);
+  logger.log(`Asset Test Results:`);
+  logger.log(`Fully working: ${successful}`);
+  logger.log(`Partial: ${partial}`);
+  logger.log(`Failed: ${failed}`);
 
   // Log detailed errors
   results.forEach(result => {
     if (result.errors.length > 0) {
-      console.warn(`Issues with ${result.plantId}:`, result.errors);
+      logger.warn(`Issues with ${result.plantId}:`, result.errors);
     }
   });
 
@@ -121,14 +122,14 @@ export const runAssetTest = async (plants?: Plant[]): Promise<void> => {
       }
       
       if (!plants || !Array.isArray(plants) || plants.length === 0) {
-        console.warn('⚠️ No plants available for asset testing');
+        logger.warn('No plants available for asset testing');
         return;
       }
       
-      console.log('🧪 Starting asset tests...');
+      logger.log('Starting asset tests...');
       await testAllPlantAssets(plants);
     } catch (error) {
-      console.error('❌ Asset testing failed:', error);
+      logger.error('Asset testing failed:', error);
     }
   }
 };

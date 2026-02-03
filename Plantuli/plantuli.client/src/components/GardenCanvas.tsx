@@ -6,6 +6,7 @@ import { Rulers } from './Rulers';
 import { PlacedPlantCanvas } from './PlacedPlantCanvas';
 import { SelectionHighlight } from './SelectionHighlight';
 import { GardenCoordinateSystem } from '../utils/coordinateSystem';
+import { logger } from '../utils/logger';
 import type { Viewport, LayerVisibility, PlacedPlant } from '../types';
 
 interface GardenCanvasProps {
@@ -58,7 +59,6 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
   const handleWheel = (e: KonvaEventObject<WheelEvent>) => {
     // CRITICAL: If a plant is being dragged, completely ignore zoom
     if (draggingPlantId) {
-      console.log('🚫 Plant is being dragged - ignoring wheel/zoom');
       e.evt.preventDefault();
       return;
     }
@@ -114,7 +114,6 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
   const handleMouseDown = (e: KonvaEventObject<MouseEvent>) => {
     // CRITICAL: If a plant is being dragged, completely ignore Stage mouse events
     if (draggingPlantId) {
-      console.log('🚫 Plant is being dragged - ignoring Stage mouseDown');
       return;
     }
     
@@ -123,7 +122,6 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     
     // Check if the event was already handled by a plant
     if ((e.evt as any)._handled) {
-      console.log('🚫 Event already handled by plant - ignoring Stage mouseDown');
       return;
     }
     
@@ -132,35 +130,21 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     const stage = e.target.getStage();
     if (!stage) return;
     
-    console.log('🟡 Stage mouseDown debug:', {
-      targetType: target.constructor.name,
-      targetAttrs: target.attrs,
-      parentType: target.getParent ? target.getParent()?.constructor?.name : 'no parent',
-      parentDraggable: target.getParent ? target.getParent()?.attrs?.draggable : 'no parent',
-      layerName: target.getLayer?.()?.attrs?.name,
-      selectedPlantId,
-      draggingPlantId
-    });
-    
     // Check if we clicked on a plant group (which should be draggable)
     // Enhanced detection to prevent @dnd-kit interference
     if (target.getParent && target.getParent()?.attrs?.draggable) {
-      console.log('🟡 Clicked on draggable plant - skipping pan');
       return; // Let the plant handle its own drag
     }
     
     // Also check if target itself is draggable (for direct group clicks)
     if (target.attrs?.draggable) {
-      console.log('🟡 Clicked on draggable element - skipping pan');
       return;
     }
     
     // Additional check: if any plant is selected, be extra careful about starting pan
     if (selectedPlantId) {
-      console.log('🟡 Plant is selected - being extra careful about pan start');
       // Only start pan if we're definitely on background
       if (!(e.target === stage || e.target.getLayer?.()?.attrs?.name === 'background')) {
-        console.log('🟡 Not on background and plant selected - skipping pan');
         return;
       }
     }
@@ -170,7 +154,6 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     const isBackgroundRect = e.target.constructor.name === 'Rect' && e.target.getLayer?.()?.attrs?.name === 'background';
     
     if (isBackground || isBackgroundRect) {
-      console.log('🟡 Clicked on background - clearing selection and starting pan');
       onPlantSelect?.('');  // Clear selection by passing empty string
     }
     
@@ -481,26 +464,14 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
         {/* Selection Layer (z-index 3) */}
         {layerVisibility.selection && (
           <Layer name="selection">
-            {(() => {
-              console.log('🟡 Selection Layer Debug:', {
-                selectedPlantId,
-                draggingPlantId,
-                layerVisible: layerVisibility.selection,
-                shouldShow: selectedPlantId && selectedPlantId !== draggingPlantId
-              });
-              
-              if (selectedPlantId && selectedPlantId !== draggingPlantId) {
-                const selectedPlant = placedPlants.find(p => p.instanceId === selectedPlantId);
-                console.log('🟡 Found selected plant:', selectedPlant);
-                
-                return selectedPlant ? (
-                  <SelectionHighlight
-                    placedPlant={selectedPlant}
-                    pixelsPerMeter={100}
-                  />
-                ) : null;
-              }
-              return null;
+            {selectedPlantId && selectedPlantId !== draggingPlantId && (() => {
+              const selectedPlant = placedPlants.find(p => p.instanceId === selectedPlantId);
+              return selectedPlant ? (
+                <SelectionHighlight
+                  placedPlant={selectedPlant}
+                  pixelsPerMeter={100}
+                />
+              ) : null;
             })()}
           </Layer>
         )}

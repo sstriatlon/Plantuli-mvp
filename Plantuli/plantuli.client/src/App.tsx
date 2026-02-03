@@ -14,6 +14,7 @@ import { useSwipe } from './hooks/useSwipe';
 import { mockPlants } from './data/mockPlants';
 import { runAssetTest } from './utils/assetTester';
 import { assetCache } from './utils/assetCache';
+import { logger } from './utils/logger';
 import { 
     saveGardenNative, 
     loadGardenNative, 
@@ -262,8 +263,6 @@ function App() {
                     placedPlants: prev.placedPlants.filter(p => p.instanceId !== appState.selectedPlantId),
                     selectedPlantId: null
                 }));
-                
-                console.log(`Planta eliminada: ${selectedPlant.plant.name} (${appState.selectedPlantId})`);
             }
         }
     };
@@ -302,7 +301,7 @@ function App() {
                     'Jardín guardado', 
                     `"${result.fileName}" se guardó correctamente`
                 );
-                console.log('✅ Jardín guardado exitosamente:', result.fileName);
+                logger.log('Jardín guardado exitosamente:', result.fileName);
             } else {
                 if (result.error !== 'Guardado cancelado por el usuario') {
                     showError(
@@ -310,14 +309,14 @@ function App() {
                         result.error || 'No se pudo guardar el jardín'
                     );
                 }
-                console.error('❌ Error al guardar jardín:', result.error);
+                logger.error('Error al guardar jardín:', result.error);
             }
         } catch (error: unknown) {
             showError(
                 'Error al guardar', 
                 `Error inesperado: ${error instanceof Error ? error.message : 'Error desconocido'}`
             );
-            console.error('❌ Error inesperado al guardar:', error);
+            logger.error('Error inesperado al guardar:', error);
         }
     };
 
@@ -348,7 +347,7 @@ function App() {
                     'Jardín cargado', 
                     `"${result.fileName}" se cargó correctamente`
                 );
-                console.log('✅ Jardín cargado exitosamente:', result.fileName);
+                logger.log('Jardín cargado exitosamente:', result.fileName);
             } else {
                 if (result.error !== 'Carga cancelada por el usuario') {
                     showError(
@@ -356,14 +355,14 @@ function App() {
                         result.error || 'No se pudo cargar el jardín'
                     );
                 }
-                console.error('❌ Error al cargar jardín:', result.error);
+                logger.error('Error al cargar jardín:', result.error);
             }
         } catch (error: unknown) {
             showError(
                 'Error al cargar', 
                 `Error inesperado: ${error instanceof Error ? error.message : 'Error desconocido'}`
             );
-            console.error('❌ Error inesperado al cargar:', error);
+            logger.error('Error inesperado al cargar:', error);
         }
     };
 
@@ -400,36 +399,17 @@ function App() {
 
     const handlePlantSelect = (plant: Plant) => {
         setSelectedPlant(plant);
-        console.log('Planta seleccionada:', plant);
     };
 
     const handlePlantInstanceSelect = (instanceId: string) => {
-        console.log('🔵 handlePlantInstanceSelect called with:', instanceId);
-        console.log('🔵 Current state before update:', {
-            selectedPlantId: appState.selectedPlantId,
-            draggingPlantId: draggingPlantId,
-            layerVisibility: appState.layerVisibility
-        });
-        
-        setAppState(prev => {
-            const newState = {
-                ...prev,
-                selectedPlantId: instanceId && instanceId.trim() !== '' ? instanceId : null
-            };
-            console.log('🔵 New state after update:', {
-                selectedPlantId: newState.selectedPlantId,
-                layerVisibility: newState.layerVisibility
-            });
-            return newState;
-        });
-        
-        console.log('🔵 Planta instancia seleccionada:', instanceId);
-        console.log('🔵 Estado actual selectedPlantId después de update');
+        setAppState(prev => ({
+            ...prev,
+            selectedPlantId: instanceId && instanceId.trim() !== '' ? instanceId : null
+        }));
     };
 
     const handlePlantDragStart = (instanceId: string) => {
         setDraggingPlantId(instanceId);
-        console.log('Plant drag started:', instanceId);
     };
 
     const handlePlantDragEnd = (instanceId: string, newPosition: { x: number; y: number }) => {
@@ -452,12 +432,6 @@ function App() {
                         : plant
                 )
             }));
-            console.log('Plant repositioned via Konva drag:', {
-                instanceId,
-                newPosition
-            });
-        } else {
-            console.log('Plant clicked (position unchanged):', instanceId);
         }
     };
 
@@ -467,7 +441,6 @@ function App() {
         
         if (plantData?.type === 'plant') {
             setActiveDragItem(plantData.plant);
-            console.log('Drag started for plant:', plantData.plant.name);
         } else if (plantData?.type === 'placed-plant') {
             setActiveDragItem(plantData.placedPlant.plant);
             // Select the plant being dragged
@@ -475,7 +448,6 @@ function App() {
                 ...prev,
                 selectedPlantId: plantData.placedPlant.instanceId
             }));
-            console.log('Drag started for placed plant:', plantData.placedPlant.plant.name);
         }
     };
 
@@ -483,7 +455,6 @@ function App() {
         const { active, over } = event;
         
         if (!over) {
-            console.log('Drag cancelled - no drop target');
             setActiveDragItem(null);
             return;
         }
@@ -494,7 +465,7 @@ function App() {
             
             if (plantData?.type === 'plant') {
                 // Handle new plant from sidebar
-                // FIX: Calculate the final mouse position correctly using delta
+                // Calculate the final mouse position correctly using delta
                 const startEvent = event.activatorEvent as MouseEvent;
                 const deltaX = event.delta?.x || 0;
                 const deltaY = event.delta?.y || 0;
@@ -503,22 +474,6 @@ function App() {
                 const finalMouseX = startEvent.clientX + deltaX;
                 const finalMouseY = startEvent.clientY + deltaY;
                 
-                console.log('🟦 Drop coordinates debug (FIXED):', {
-                    startPosition: { x: startEvent.clientX, y: startEvent.clientY },
-                    delta: { x: deltaX, y: deltaY },
-                    finalMousePosition: { x: finalMouseX, y: finalMouseY },
-                    canvasRect: canvasRect ? {
-                        left: canvasRect.left,
-                        top: canvasRect.top,
-                        width: canvasRect.width,
-                        height: canvasRect.height
-                    } : 'null',
-                    viewport: {
-                        zoom: appState.viewport.zoom,
-                        pan: { x: appState.viewport.pan.x, y: appState.viewport.pan.y }
-                    }
-                });
-                
                 let canvasX, canvasY;
                 
                 if (canvasRect) {
@@ -526,27 +481,14 @@ function App() {
                     const canvasRelativeX = finalMouseX - canvasRect.left;
                     const canvasRelativeY = finalMouseY - canvasRect.top;
                     
-                    console.log('🟦 Canvas-relative coords:', {
-                        canvasRelativeX,
-                        canvasRelativeY,
-                        calculation: `${finalMouseX} - ${canvasRect.left} = ${canvasRelativeX}`
-                    });
-                    
                     // Convert from viewport coordinates to content coordinates
                     // Account for the pan offset and zoom
                     canvasX = (canvasRelativeX - appState.viewport.pan.x) / appState.viewport.zoom;
                     canvasY = (canvasRelativeY - appState.viewport.pan.y) / appState.viewport.zoom;
-                    
-                    console.log('🟦 After viewport transform:', {
-                        canvasX,
-                        canvasY,
-                        calculation: `(${canvasRelativeX} - ${appState.viewport.pan.x}) / ${appState.viewport.zoom} = ${canvasX}`
-                    });
                 } else {
                     // Fallback: use a default position if canvas rect not available
                     canvasX = 100; // Default to 1 meter
                     canvasY = 100; // Default to 1 meter
-                    console.log('🟦 Using fallback position');
                 }
                 
                 const realX = canvasX / 100;
@@ -556,23 +498,6 @@ function App() {
                 const canvasBounds = { width: 10, height: 8 }; // meters
                 const clampedRealX = Math.max(0, Math.min(canvasBounds.width - 0.1, realX));
                 const clampedRealY = Math.max(0, Math.min(canvasBounds.height - 0.1, realY));
-                
-                const wasClampedX = Math.abs(clampedRealX - realX) > 0.01;
-                const wasClampedY = Math.abs(clampedRealY - realY) > 0.01;
-                
-                if (wasClampedX || wasClampedY) {
-                    console.log('🟦 Plant position was clamped to canvas bounds:', {
-                        original: { x: realX, y: realY },
-                        clamped: { x: clampedRealX, y: clampedRealY },
-                        bounds: canvasBounds
-                    });
-                }
-                
-                console.log('🟦 Final result:', {
-                    canvasCoords: { x: canvasX, y: canvasY },
-                    realCoords: { x: clampedRealX, y: clampedRealY },
-                    willAppearAt: `${clampedRealX * 100}px, ${clampedRealY * 100}px in canvas`
-                });
                 
                 const instanceId = crypto.randomUUID();
                 const newPlacedPlant = {
@@ -584,30 +509,16 @@ function App() {
                     placedAt: new Date()
                 };
                 
-                console.log('🟦 Creating new plant:', {
-                    instanceId,
-                    plantName: plantData.plant.name,
-                    position: { x: clampedRealX, y: clampedRealY },
-                    willRenderAt: `${clampedRealX * 100}px, ${clampedRealY * 100}px`
-                });
-                
-                setAppState(prev => {
-                    const newState = {
-                        ...prev,
-                        placedPlants: [...prev.placedPlants, newPlacedPlant]
-                    };
-                    console.log('🟦 Updated placedPlants count:', newState.placedPlants.length);
-                    return newState;
-                });
+                setAppState(prev => ({
+                    ...prev,
+                    placedPlants: [...prev.placedPlants, newPlacedPlant]
+                }));
                 
                 setNewlyPlacedPlantId(instanceId);
                 setTimeout(() => setNewlyPlacedPlantId(null), 400);
                 
-                console.log('🟦 Plant creation completed');
-                
             } else if (plantData?.type === 'placed-plant') {
                 // Handle repositioning existing plant
-                // FIX: Use consistent coordinate calculation for placed plants
                 const startEvent = event.activatorEvent as MouseEvent;
                 const deltaX = event.delta?.x || 0;
                 const deltaY = event.delta?.y || 0;
@@ -642,16 +553,6 @@ function App() {
                                 : plant
                         )
                     }));
-                    
-                    console.log('Plant repositioned via DnD:', {
-                        name: plantData.placedPlant.plant.name,
-                        instanceId: plantData.placedPlant.instanceId,
-                        finalMousePosition: { x: finalMouseX, y: finalMouseY },
-                        newPosition: { x: clampedRealX, y: clampedRealY },
-                        wasClamped: Math.abs(clampedRealX - realX) > 0.01 || Math.abs(clampedRealY - realY) > 0.01
-                    });
-                } else {
-                    console.log('Cannot reposition plant - no canvas rect available');
                 }
             }
         }
@@ -665,7 +566,7 @@ function App() {
     useEffect(() => {
         // Run asset testing in development
         if (process.env.NODE_ENV === 'development') {
-            console.log('🧪 Ejecutando tests de assets...');
+            logger.log('Ejecutando tests de assets...');
             runAssetTest();
         }
 
