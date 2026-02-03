@@ -5,8 +5,8 @@ import {
     GRID_TARGET_SPACING,
     GRID_MAJOR_SPACING_VALUES,
     GRID_MINOR_DIVISOR
-} from '../constants';
-import type { Viewport } from '../types';
+} from '../../../shared/constants';
+import type { Viewport } from '../../../shared/types';
 
 interface RulersProps {
   dimensions: { width: number; height: number };

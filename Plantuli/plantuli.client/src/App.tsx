@@ -1,27 +1,23 @@
 import { useState, useEffect } from 'react';
 import { DndContext, DragOverlay, PointerSensor, KeyboardSensor, TouchSensor, useSensor, useSensors, closestCenter, type DragEndEvent, type DragStartEvent, type Modifier } from '@dnd-kit/core';
 import { Eye, EyeOff, ChevronDown } from 'lucide-react';
-import { GardenCanvas } from './components/GardenCanvas';
-import { PlantCatalog } from './components/PlantCatalog';
+import { GardenCanvas } from './features/garden-canvas';
+import { PlantCatalog } from './features/plant-management';
 import { CacheDebugPanel } from './components/CacheDebugPanel';
-import { PlantDragPreview } from './components/PlantDragPreview';
-import { Header } from './components/Header';
-import { Toolbar } from './components/Toolbar';
-import { MobileToolbar } from './components/MobileToolbar';
-import { ToastContainer } from './components/Toast';
-import { useToast } from './hooks/useToast';
+import { PlantDragPreview } from './features/drag-and-drop';
+import { Header, Toolbar, MobileToolbar } from './features/layout';
+import { ToastContainer, useToast } from './features/notifications';
 import { useSwipe } from './hooks/useSwipe';
 import { mockPlants } from './data/mockPlants';
 import { runAssetTest } from './utils/assetTester';
-import { assetCache } from './utils/assetCache';
-import { logger } from './utils/logger';
+import { assetCache, logger } from './shared';
 import { 
     saveGardenNative, 
     loadGardenNative, 
     downloadGardenFile, 
     loadGardenFileInput, 
     isFileSystemAccessSupported 
-} from './utils/nativeFileSystem';
+} from './features/file-management';
 import {
     MOBILE_BREAKPOINT,
     TABLET_BREAKPOINT,
@@ -44,9 +40,9 @@ import {
     SIDEBAR_TABLET_NORMAL_WIDTH,
     SIDEBAR_DESKTOP_EXPANDED_WIDTH,
     SIDEBAR_DESKTOP_NORMAL_WIDTH
-} from './constants';
-import { convertScreenToRealWorld } from './utils/coordinateHelpers';
-import type { AppState, Viewport, LayerVisibility, Plant, Tool } from './types';
+} from './shared/constants';
+import { convertScreenToRealWorld } from './shared/utils/coordinateHelpers';
+import type { AppState, Viewport, LayerVisibility, Plant, Tool } from './shared/types';
 
 type SidebarState = 'collapsed' | 'normal' | 'expanded';
 type ScreenSize = 'mobile' | 'tablet' | 'desktop';

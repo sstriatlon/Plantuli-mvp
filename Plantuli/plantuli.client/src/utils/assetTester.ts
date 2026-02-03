@@ -1,6 +1,6 @@
-import type { Plant } from '../types';
+import type { Plant } from '../shared/types';
 import { hasPlantAssets } from './plantAssets';
-import { logger } from './logger';
+import { logger } from '../shared';
 
 interface AssetTestResult {
   plantId: string;

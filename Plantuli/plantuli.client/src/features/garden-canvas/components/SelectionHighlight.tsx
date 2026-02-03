@@ -1,6 +1,6 @@
 import { Ellipse } from 'react-konva';
-import { SELECTION_HIGHLIGHT_PADDING, DASH_PATTERN } from '../constants';
-import type { PlacedPlant } from '../types';
+import { SELECTION_HIGHLIGHT_PADDING, DASH_PATTERN } from '../../../shared/constants';
+import type { PlacedPlant } from '../../../shared/types';
 
 interface SelectionHighlightProps {
   placedPlant: PlacedPlant;

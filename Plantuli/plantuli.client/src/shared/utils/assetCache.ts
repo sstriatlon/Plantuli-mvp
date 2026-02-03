@@ -225,7 +225,7 @@ class AssetCacheManager {
    * Preload de assets de una planta específica
    */
   private async preloadPlantAssets(plantId: string, priority: AssetCacheEntry['priority']): Promise<void> {
-    const { getPlantAssets } = await import('./plantAssets');
+    const { getPlantAssets } = await import('../../utils/plantAssets');
     const assets = getPlantAssets(plantId);
 
     // Preload en orden de prioridad: icon -> thumbnail -> sprite
@@ -254,7 +254,7 @@ class AssetCacheManager {
    */
   private async preloadCriticalAssets(): Promise<void> {
     try {
-      const { mockPlants } = await import('../data/mockPlants');
+      const { mockPlants } = await import('../../data/mockPlants');
       
       // Obtener las 5 plantas más populares o críticas
       const criticalPlants = this.getCriticalPlants(mockPlants.slice(0, 5));

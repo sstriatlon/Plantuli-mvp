@@ -1,5 +1,5 @@
 import type { SavedGarden } from './gardenStorage';
-import type { PlacedPlant, Viewport } from '../types';
+import type { PlacedPlant, Viewport } from '../../../shared/types';
 
 // Verificar soporte del File System Access API
 export function isFileSystemAccessSupported(): boolean {

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import type { Plant } from '../types';
-import { assetCache } from '../utils/assetCache';
-import { logger } from '../utils/logger';
+import type { Plant } from '../../../shared/types';
+import { assetCache } from '../../../shared/utils/assetCache';
+import { logger } from '../../../shared/utils/logger';
 
 interface PlantImageProps {
   plant: Plant;

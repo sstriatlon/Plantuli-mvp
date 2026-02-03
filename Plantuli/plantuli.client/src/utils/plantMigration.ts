@@ -1,4 +1,4 @@
-import type { Plant } from '../types';
+import type { Plant } from '../shared/types';
 import { getPlantAssets } from './plantAssets';
 
 /**

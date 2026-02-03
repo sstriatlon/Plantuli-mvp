@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Save, AlertTriangle } from 'lucide-react';
-import { Modal } from './Modal';
+import { Modal } from '../../../shared/components/Modal';
 import { listGardens } from '../utils/gardenStorage';
 import type { SavedGarden } from '../utils/gardenStorage';
 

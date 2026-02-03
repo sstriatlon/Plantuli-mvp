@@ -1,9 +1,9 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { Search, Filter, X } from 'lucide-react';
 import { PlantCard } from './PlantCard';
-import { mockPlants } from '../data/mockPlants';
-import { assetCache } from '../utils/assetCache';
-import type { Plant } from '../types';
+import { mockPlants } from '../../../data/mockPlants';
+import { assetCache } from '../../../shared/utils/assetCache';
+import type { Plant } from '../../../shared/types';
 
 interface PlantCatalogProps {
   onPlantSelect?: (plant: Plant) => void;

@@ -1,4 +1,4 @@
-import type { Position } from '../types';
+import type { Position } from '../../../shared/types';
 
 export class GardenCoordinateSystem {
   private scale: number; // 1px = 1cm

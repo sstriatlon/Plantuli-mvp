@@ -23,8 +23,8 @@ import {
     GRID_MINOR_LINE_OPACITY,
     CANVAS_BORDER_STROKE_WIDTH,
     PINCH_ZOOM_MIN_TOUCHES
-} from '../constants';
-import type { Viewport, LayerVisibility, PlacedPlant } from '../types';
+} from '../../../shared/constants';
+import type { Viewport, LayerVisibility, PlacedPlant } from '../../../shared/types';
 
 interface GardenCanvasProps {
   viewport: Viewport;

@@ -15,7 +15,7 @@ import {
     ChevronUp
 } from 'lucide-react';
 
-import type { Tool } from '../types';
+import type { Tool } from '../../../shared/types';
 
 interface MobileToolbarProps {
     // Estado actual

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getMigrationStats, cleanLegacyData } from '../utils/plantMigration';
-import { logger } from '../utils/logger';
-import type { Plant } from '../types';
+import { logger } from '../shared';
+import type { Plant } from '../shared/types';
 
 export interface MigrationMode {
   enabled: boolean;

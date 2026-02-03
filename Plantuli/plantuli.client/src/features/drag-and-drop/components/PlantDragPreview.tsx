@@ -1,5 +1,5 @@
-import type { Plant } from '../types';
-import { PlantImage } from './PlantImage';
+import type { Plant } from '../../../shared/types';
+import { PlantImage } from '../../plant-management';
 
 interface PlantDragPreviewProps {
   plant: Plant;

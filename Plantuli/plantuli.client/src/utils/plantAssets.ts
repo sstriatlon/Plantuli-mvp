@@ -1,5 +1,5 @@
-import type { Plant } from '../types';
-import { assetCache } from './assetCache';
+import type { Plant } from '../shared/types';
+import { assetCache } from '../shared';
 
 /**
  * Genera las rutas de assets para una planta específica

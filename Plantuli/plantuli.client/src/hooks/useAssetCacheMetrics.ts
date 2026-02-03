@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { assetCache, type CacheMetrics } from '../utils/assetCache';
+import { assetCache, type CacheMetrics } from '../shared';
 
 export function useAssetCacheMetrics(updateInterval: number = 5000) {
   const [metrics, setMetrics] = useState<CacheMetrics | null>(null);

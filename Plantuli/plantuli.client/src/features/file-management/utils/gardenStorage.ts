@@ -1,5 +1,5 @@
-import type { PlacedPlant, Viewport } from '../types';
-import { logger } from './logger';
+import type { PlacedPlant, Viewport } from '../../../shared/types';
+import { logger } from '../../../shared/utils/logger';
 
 // Interfaces para el sistema de persistencia
 export interface SavedGarden {

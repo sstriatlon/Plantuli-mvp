@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Circle, Group, Image } from 'react-konva';
 import type { KonvaEventObject } from 'konva/lib/Node';
 import Konva from 'konva';
-import { logger } from '../utils/logger';
+import { logger } from '../../../shared/utils/logger';
 import {
     DRAG_MOVEMENT_THRESHOLD,
     QUICK_CLICK_THRESHOLD_MS,
@@ -15,8 +15,8 @@ import {
     PLANT_BORDER_OPACITY,
     PLANT_BORDER_STROKE_WIDTH,
     DASH_PATTERN
-} from '../constants';
-import type { PlacedPlant } from '../types';
+} from '../../../shared/constants';
+import type { PlacedPlant } from '../../../shared/types';
 
 interface PlacedPlantCanvasProps {
   placedPlant: PlacedPlant;

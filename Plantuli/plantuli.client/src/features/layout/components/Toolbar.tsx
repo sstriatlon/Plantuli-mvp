@@ -12,7 +12,7 @@ import {
     RotateCcw 
 } from 'lucide-react';
 
-import type { Tool } from '../types';
+import type { Tool } from '../../../shared/types';
 
 interface ToolbarProps {
     className?: string;

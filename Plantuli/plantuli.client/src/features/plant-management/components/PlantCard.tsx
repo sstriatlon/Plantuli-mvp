@@ -1,5 +1,5 @@
 import { useDraggable } from '@dnd-kit/core';
-import type { Plant } from '../types';
+import type { Plant } from '../../../shared/types';
 import { PlantImage } from './PlantImage';
 
 interface PlantCardProps {
