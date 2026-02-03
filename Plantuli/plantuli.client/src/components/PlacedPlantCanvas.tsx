@@ -9,13 +9,12 @@ interface PlacedPlantCanvasProps {
   placedPlant: PlacedPlant;
   pixelsPerMeter?: number;
   showConfirmationEffect?: boolean;
-  isSelected?: boolean;
   onSelect?: (instanceId: string) => void;
   onDragEnd?: (instanceId: string, newPosition: { x: number; y: number }) => void;
   onDragStart?: (instanceId: string) => void;
 }
 
-export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfirmationEffect = false, isSelected = false, onSelect, onDragEnd, onDragStart }: PlacedPlantCanvasProps) {
+export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfirmationEffect = false, onSelect, onDragEnd, onDragStart }: PlacedPlantCanvasProps) {
   const { plant, position, scale } = placedPlant;
   const groupRef = useRef<Konva.Group>(null);
   const [plantImage, setPlantImage] = useState<HTMLImageElement | null>(null);

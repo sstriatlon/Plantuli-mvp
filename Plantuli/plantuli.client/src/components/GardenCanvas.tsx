@@ -6,7 +6,6 @@ import { Rulers } from './Rulers';
 import { PlacedPlantCanvas } from './PlacedPlantCanvas';
 import { SelectionHighlight } from './SelectionHighlight';
 import { GardenCoordinateSystem } from '../utils/coordinateSystem';
-import { logger } from '../utils/logger';
 import type { Viewport, LayerVisibility, PlacedPlant } from '../types';
 
 interface GardenCanvasProps {
@@ -452,7 +451,6 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
                 placedPlant={placedPlant}
                 pixelsPerMeter={100}
                 showConfirmationEffect={placedPlant.instanceId === newlyPlacedPlantId}
-                isSelected={placedPlant.instanceId === selectedPlantId}
                 onSelect={onPlantSelect}
                 onDragStart={onPlantDragStart}
                 onDragEnd={onPlantDragEnd}
