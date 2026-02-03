@@ -22,6 +22,34 @@ import {
     loadGardenFileInput, 
     isFileSystemAccessSupported 
 } from './utils/nativeFileSystem';
+import {
+    MOBILE_BREAKPOINT,
+    TABLET_BREAKPOINT,
+    SWIPE_MIN_DISTANCE,
+    DRAG_ACTIVATION_DISTANCE,
+    TOUCH_DRAG_DELAY_MS,
+    TOUCH_DRAG_TOLERANCE,
+    MIN_ZOOM,
+    MAX_ZOOM,
+    DEFAULT_ZOOM,
+    ZOOM_STEP,
+    CLONE_OFFSET_METERS,
+    CLONE_MAX_X,
+    CLONE_MAX_Y,
+    PLANT_CONFIRMATION_DURATION_MS,
+    CANVAS_WIDTH_METERS,
+    CANVAS_HEIGHT_METERS,
+    POSITION_CLAMP_TOLERANCE,
+    PIXELS_PER_METER,
+    DEFAULT_PLANT_POSITION_METERS,
+    SIDEBAR_COLLAPSED_WIDTH,
+    SIDEBAR_MOBILE_EXPANDED_WIDTH,
+    SIDEBAR_MOBILE_NORMAL_WIDTH,
+    SIDEBAR_TABLET_EXPANDED_WIDTH,
+    SIDEBAR_TABLET_NORMAL_WIDTH,
+    SIDEBAR_DESKTOP_EXPANDED_WIDTH,
+    SIDEBAR_DESKTOP_NORMAL_WIDTH
+} from './constants';
 import type { AppState, Viewport, LayerVisibility, Plant, Tool } from './types';
 
 type SidebarState = 'collapsed' | 'normal' | 'expanded';
@@ -31,10 +59,10 @@ function App() {
     // Detectar screen size inicial basado en window.innerWidth
     const initialScreenSize: ScreenSize = (() => {
         if (typeof window !== 'undefined') {
-            if (window.innerWidth < 768) {
+            if (window.innerWidth < MOBILE_BREAKPOINT) {
                 return 'mobile';
             }
-            if (window.innerWidth <= 1200) {
+            if (window.innerWidth <= TABLET_BREAKPOINT) {
                 return 'tablet';
             }
         }
@@ -63,20 +91,20 @@ function App() {
                 setSidebarState('collapsed');
             }
         },
-        minSwipeDistance: 75
+        minSwipeDistance: SWIPE_MIN_DISTANCE
     });
     
     // Configure DnD sensors
     const pointerSensor = useSensor(PointerSensor, {
         activationConstraint: {
-            distance: 8, // Start drag after 8px movement to avoid accidental drags
+            distance: DRAG_ACTIVATION_DISTANCE,
         },
     });
     const keyboardSensor = useSensor(KeyboardSensor);
     const touchSensor = useSensor(TouchSensor, {
         activationConstraint: {
-            delay: 200, // 200ms delay for touch to avoid scroll conflicts
-            tolerance: 8,
+            delay: TOUCH_DRAG_DELAY_MS,
+            tolerance: TOUCH_DRAG_TOLERANCE,
         },
     });
     
@@ -132,9 +160,9 @@ function App() {
         selectedPlantId: null,
         activeTool: 'select',
         viewport: {
-            zoom: 1,
+            zoom: DEFAULT_ZOOM,
             pan: { x: 0, y: 0 },
-            bounds: { minZoom: 0.5, maxZoom: 10 }
+            bounds: { minZoom: MIN_ZOOM, maxZoom: MAX_ZOOM }
         },
         showGrid: true,
         showRulers: true,
@@ -153,13 +181,13 @@ function App() {
         const checkScreenSize = () => {
             const width = window.innerWidth;
             
-            if (width < 768) {
+            if (width < MOBILE_BREAKPOINT) {
                 setScreenSize('mobile');
                 // En móvil, forzar sidebar colapsado inicialmente
                 if (sidebarState === 'expanded') {
                     setSidebarState('collapsed');
                 }
-            } else if (width <= 1200) {
+            } else if (width <= TABLET_BREAKPOINT) {
                 setScreenSize('tablet');
             } else {
                 setScreenSize('desktop');
@@ -210,7 +238,7 @@ function App() {
     const handleZoomIn = () => {
         const currentZoom = appState.viewport.zoom;
         const maxZoom = appState.viewport.bounds.maxZoom;
-        const newZoom = Math.min(currentZoom * 1.2, maxZoom);
+        const newZoom = Math.min(currentZoom * ZOOM_STEP, maxZoom);
         handleViewportChange({
             ...appState.viewport,
             zoom: newZoom
@@ -220,7 +248,7 @@ function App() {
     const handleZoomOut = () => {
         const currentZoom = appState.viewport.zoom;
         const minZoom = appState.viewport.bounds.minZoom;
-        const newZoom = Math.max(currentZoom / 1.2, minZoom);
+        const newZoom = Math.max(currentZoom / ZOOM_STEP, minZoom);
         handleViewportChange({
             ...appState.viewport,
             zoom: newZoom
@@ -236,8 +264,8 @@ function App() {
                     ...selectedPlant,
                     instanceId,
                     position: { 
-                        x: Math.min(selectedPlant.position.x + 0.5, 9.5), // +50cm, max 9.5m
-                        y: Math.min(selectedPlant.position.y + 0.5, 7.5)  // +50cm, max 7.5m
+                        x: Math.min(selectedPlant.position.x + CLONE_OFFSET_METERS, CLONE_MAX_X),
+                        y: Math.min(selectedPlant.position.y + CLONE_OFFSET_METERS, CLONE_MAX_Y)
                     },
                     placedAt: new Date()
                 };
@@ -249,7 +277,7 @@ function App() {
                 }));
                 
                 setNewlyPlacedPlantId(instanceId);
-                setTimeout(() => setNewlyPlacedPlantId(null), 400);
+                setTimeout(() => setNewlyPlacedPlantId(null), PLANT_CONFIRMATION_DURATION_MS);
             }
         }
     };
@@ -269,9 +297,9 @@ function App() {
 
     const handleResetViewport = () => {
         handleViewportChange({
-            zoom: 1,
+            zoom: DEFAULT_ZOOM,
             pan: { x: 0, y: 0 },
-            bounds: { minZoom: 0.5, maxZoom: 10 }
+            bounds: { minZoom: MIN_ZOOM, maxZoom: MAX_ZOOM }
         });
     };
 
@@ -487,17 +515,17 @@ function App() {
                     canvasY = (canvasRelativeY - appState.viewport.pan.y) / appState.viewport.zoom;
                 } else {
                     // Fallback: use a default position if canvas rect not available
-                    canvasX = 100; // Default to 1 meter
-                    canvasY = 100; // Default to 1 meter
+                    canvasX = DEFAULT_PLANT_POSITION_METERS * PIXELS_PER_METER;
+                    canvasY = DEFAULT_PLANT_POSITION_METERS * PIXELS_PER_METER;
                 }
                 
                 const realX = canvasX / 100;
                 const realY = canvasY / 100;
                 
-                // Validate that the plant is within canvas bounds (10m x 8m)
-                const canvasBounds = { width: 10, height: 8 }; // meters
-                const clampedRealX = Math.max(0, Math.min(canvasBounds.width - 0.1, realX));
-                const clampedRealY = Math.max(0, Math.min(canvasBounds.height - 0.1, realY));
+                // Validate that the plant is within canvas bounds
+                const canvasBounds = { width: CANVAS_WIDTH_METERS, height: CANVAS_HEIGHT_METERS };
+                const clampedRealX = Math.max(0, Math.min(canvasBounds.width - POSITION_CLAMP_TOLERANCE, realX));
+                const clampedRealY = Math.max(0, Math.min(canvasBounds.height - POSITION_CLAMP_TOLERANCE, realY));
                 
                 const instanceId = crypto.randomUUID();
                 const newPlacedPlant = {
@@ -515,7 +543,7 @@ function App() {
                 }));
                 
                 setNewlyPlacedPlantId(instanceId);
-                setTimeout(() => setNewlyPlacedPlantId(null), 400);
+                setTimeout(() => setNewlyPlacedPlantId(null), PLANT_CONFIRMATION_DURATION_MS);
                 
             } else if (plantData?.type === 'placed-plant') {
                 // Handle repositioning existing plant
@@ -539,10 +567,10 @@ function App() {
                     const realX = canvasX / 100;
                     const realY = canvasY / 100;
                     
-                    // Validate that the plant is within canvas bounds (10m x 8m)
-                    const canvasBounds = { width: 10, height: 8 }; // meters
-                    const clampedRealX = Math.max(0, Math.min(canvasBounds.width - 0.1, realX));
-                    const clampedRealY = Math.max(0, Math.min(canvasBounds.height - 0.1, realY));
+                    // Validate that the plant is within canvas bounds
+                    const canvasBounds = { width: CANVAS_WIDTH_METERS, height: CANVAS_HEIGHT_METERS };
+                    const clampedRealX = Math.max(0, Math.min(canvasBounds.width - POSITION_CLAMP_TOLERANCE, realX));
+                    const clampedRealY = Math.max(0, Math.min(canvasBounds.height - POSITION_CLAMP_TOLERANCE, realY));
                     
                     // Update existing plant position
                     setAppState(prev => ({
@@ -579,18 +607,18 @@ function App() {
     // Configuración responsiva de anchos
     const getSidebarWidth = () => {
         if (sidebarState === 'collapsed') {
-            return screenSize === 'mobile' ? '0px' : '80px';
+            return screenSize === 'mobile' ? '0px' : `${SIDEBAR_COLLAPSED_WIDTH}px`;
         }
         
         switch (screenSize) {
             case 'mobile':
-                return sidebarState === 'expanded' ? '90vw' : '280px';
+                return sidebarState === 'expanded' ? SIDEBAR_MOBILE_EXPANDED_WIDTH : `${SIDEBAR_MOBILE_NORMAL_WIDTH}px`;
             case 'tablet':
-                return sidebarState === 'expanded' ? '350px' : '280px';
+                return sidebarState === 'expanded' ? `${SIDEBAR_TABLET_EXPANDED_WIDTH}px` : `${SIDEBAR_TABLET_NORMAL_WIDTH}px`;
             case 'desktop':
-                return sidebarState === 'expanded' ? '450px' : '320px';
+                return sidebarState === 'expanded' ? `${SIDEBAR_DESKTOP_EXPANDED_WIDTH}px` : `${SIDEBAR_DESKTOP_NORMAL_WIDTH}px`;
             default:
-                return '320px';
+                return `${SIDEBAR_DESKTOP_NORMAL_WIDTH}px`;
         }
     };
 

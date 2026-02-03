@@ -6,6 +6,24 @@ import { Rulers } from './Rulers';
 import { PlacedPlantCanvas } from './PlacedPlantCanvas';
 import { SelectionHighlight } from './SelectionHighlight';
 import { GardenCoordinateSystem } from '../utils/coordinateSystem';
+import {
+    PIXELS_PER_METER,
+    CANVAS_WIDTH_METERS,
+    CANVAS_HEIGHT_METERS,
+    CANVAS_WIDTH_PX,
+    CANVAS_HEIGHT_PX,
+    ZOOM_WHEEL_SCALE,
+    ZOOM_CHANGE_THRESHOLD,
+    GRID_TARGET_SPACING,
+    GRID_MAJOR_SPACING_VALUES,
+    GRID_MINOR_DIVISOR,
+    GRID_MAJOR_STROKE_WIDTH,
+    GRID_MINOR_STROKE_WIDTH,
+    GRID_MAJOR_LINE_OPACITY,
+    GRID_MINOR_LINE_OPACITY,
+    CANVAS_BORDER_STROKE_WIDTH,
+    PINCH_ZOOM_MIN_TOUCHES
+} from '../constants';
 import type { Viewport, LayerVisibility, PlacedPlant } from '../types';
 
 interface GardenCanvasProps {
@@ -67,7 +85,6 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
     // Para wheel events, proceder directamente con el zoom del mouse
     
     // Mouse wheel zoom existente
-    const scaleBy = 1.08;
     const stage = e.target.getStage();
     if (!stage) return;
     
@@ -85,13 +102,13 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
 
     // Determine new scale with smooth stepping
     const direction = e.evt.deltaY > 0 ? -1 : 1;
-    const newScale = direction > 0 ? oldScale * scaleBy : oldScale / scaleBy;
+    const newScale = direction > 0 ? oldScale * ZOOM_WHEEL_SCALE : oldScale / ZOOM_WHEEL_SCALE;
     
     // Apply zoom limits with smooth clamping
     const clampedScale = Math.max(viewport.bounds.minZoom, Math.min(viewport.bounds.maxZoom, newScale));
     
     // Only update if scale actually changed (prevents unnecessary updates at limits)
-    if (Math.abs(clampedScale - oldScale) < 0.001) return;
+    if (Math.abs(clampedScale - oldScale) < ZOOM_CHANGE_THRESHOLD) return;
     
     // Calculate new position to keep the mouse point in the same place
     const newPos = {
@@ -213,7 +230,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
 
   const handlePinchZoom = (e: KonvaEventObject<TouchEvent>) => {
     const touches = e.evt.touches;
-    if (touches.length !== 2) return;
+    if (touches.length !== PINCH_ZOOM_MIN_TOUCHES) return;
 
     const touchCenter = getTouchCenter(touches);
     const touchDistance = getTouchDistance(touches);
@@ -255,7 +272,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
 
   const handleTouchStart = (e: KonvaEventObject<TouchEvent>) => {
     const touches = e.evt.touches;
-    if (touches.length === 2) {
+    if (touches.length === PINCH_ZOOM_MIN_TOUCHES) {
       setLastTouchCenter(getTouchCenter(touches));
       setLastTouchDistance(getTouchDistance(touches));
     } else {
@@ -266,7 +283,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
 
   const handleTouchEnd = (e: KonvaEventObject<TouchEvent>) => {
     const touches = e.evt.touches;
-    if (touches.length < 2) {
+    if (touches.length < PINCH_ZOOM_MIN_TOUCHES) {
       setLastTouchCenter(null);
       setLastTouchDistance(null);
     }
@@ -277,41 +294,32 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
 
     const lines = [];
     const { width, height } = dimensions;
-    const basePx = 100; // Same as rulers: 100px = 1m at zoom 1x
-
-    // Define fixed canvas size in real-world meters
-    const canvasRealSize = {
-      width: 10, // 10 metros de ancho
-      height: 8   // 8 metros de alto
-    };
 
     // Use same spacing logic as rulers
     const getMajorSpacing = (zoom: number) => {
-      const pixelsPerMeter = basePx * zoom;
-      const targetSpacing = 100;
-      const metersPerLabel = targetSpacing / pixelsPerMeter;
-      const majorValues = [0.25, 0.5, 1, 2.5, 5, 10, 25, 50, 100];
-      return majorValues.reduce((prev, curr) => 
+      const pixelsPerMeter = PIXELS_PER_METER * zoom;
+      const metersPerLabel = GRID_TARGET_SPACING / pixelsPerMeter;
+      return GRID_MAJOR_SPACING_VALUES.reduce((prev, curr) => 
         Math.abs(curr - metersPerLabel) < Math.abs(prev - metersPerLabel) ? curr : prev
       );
     };
 
     const majorSpacing = getMajorSpacing(viewport.zoom);
-    const minorSpacing = majorSpacing / 4; // Minor lines every 1/4 of major spacing
+    const minorSpacing = majorSpacing / GRID_MINOR_DIVISOR;
 
     // Define canvas bounds in real-world coordinates (fixed size)
     const canvasBounds = {
       left: 0,
       top: 0,
-      right: canvasRealSize.width,
-      bottom: canvasRealSize.height
+      right: CANVAS_WIDTH_METERS,
+      bottom: CANVAS_HEIGHT_METERS
     };
 
     // Calculate visible ranges in real-world meters, limited to canvas bounds
-    const viewStartX = Math.max(canvasBounds.left, -viewport.pan.x / viewport.zoom / basePx);
-    const viewEndX = Math.min(canvasBounds.right, (-viewport.pan.x + width) / viewport.zoom / basePx);
-    const viewStartY = Math.max(canvasBounds.top, -viewport.pan.y / viewport.zoom / basePx);
-    const viewEndY = Math.min(canvasBounds.bottom, (-viewport.pan.y + height) / viewport.zoom / basePx);
+    const viewStartX = Math.max(canvasBounds.left, -viewport.pan.x / viewport.zoom / PIXELS_PER_METER);
+    const viewEndX = Math.min(canvasBounds.right, (-viewport.pan.x + width) / viewport.zoom / PIXELS_PER_METER);
+    const viewStartY = Math.max(canvasBounds.top, -viewport.pan.y / viewport.zoom / PIXELS_PER_METER);
+    const viewEndY = Math.min(canvasBounds.bottom, (-viewport.pan.y + height) / viewport.zoom / PIXELS_PER_METER);
 
     const startXMajor = Math.max(0, Math.floor(viewStartX / majorSpacing) * majorSpacing);
     const endXMajor = Math.min(canvasBounds.right, Math.ceil(viewEndX / majorSpacing) * majorSpacing);
@@ -327,18 +335,18 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
 
     // Vertical lines - Minor first
     for (let meters = startXMinor; meters <= endXMinor; meters += minorSpacing) {
-      const isMajorPosition = Math.abs(meters % majorSpacing) < 0.001;
+      const isMajorPosition = Math.abs(meters % majorSpacing) < ZOOM_CHANGE_THRESHOLD;
       if (isMajorPosition) continue; // Skip minor lines that coincide with major
       
-      const canvasX = meters * basePx;
+      const canvasX = meters * PIXELS_PER_METER;
       if (meters >= canvasBounds.left && meters <= canvasBounds.right) {
         lines.push(
           <Line
             key={`v-minor-${meters}`}
-            points={[canvasX, canvasBounds.top * basePx, canvasX, canvasBounds.bottom * basePx]}
+            points={[canvasX, canvasBounds.top * PIXELS_PER_METER, canvasX, canvasBounds.bottom * PIXELS_PER_METER]}
             stroke="#c0c0c0ff"
-            strokeWidth={0.8 / viewport.zoom}
-            opacity={0.45}
+            strokeWidth={GRID_MINOR_STROKE_WIDTH / viewport.zoom}
+            opacity={GRID_MINOR_LINE_OPACITY}
           />
         );
       }
@@ -346,15 +354,15 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
 
     // Vertical lines - Major
     for (let meters = startXMajor; meters <= endXMajor; meters += majorSpacing) {
-      const canvasX = meters * basePx;
+      const canvasX = meters * PIXELS_PER_METER;
       if (meters >= canvasBounds.left && meters <= canvasBounds.right) {
         lines.push(
           <Line
             key={`v-major-${meters}`}
-            points={[canvasX, canvasBounds.top * basePx, canvasX, canvasBounds.bottom * basePx]}
+            points={[canvasX, canvasBounds.top * PIXELS_PER_METER, canvasX, canvasBounds.bottom * PIXELS_PER_METER]}
             stroke="#b9b9b9ff"
-            strokeWidth={1.3 / viewport.zoom}
-            opacity={0.6}
+            strokeWidth={GRID_MAJOR_STROKE_WIDTH / viewport.zoom}
+            opacity={GRID_MAJOR_LINE_OPACITY}
           />
         );
       }
@@ -362,18 +370,18 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
 
     // Horizontal lines - Minor first
     for (let meters = startYMinor; meters <= endYMinor; meters += minorSpacing) {
-      const isMajorPosition = Math.abs(meters % majorSpacing) < 0.001;
+      const isMajorPosition = Math.abs(meters % majorSpacing) < ZOOM_CHANGE_THRESHOLD;
       if (isMajorPosition) continue; // Skip minor lines that coincide with major
       
-      const canvasY = meters * basePx;
+      const canvasY = meters * PIXELS_PER_METER;
       if (meters >= canvasBounds.top && meters <= canvasBounds.bottom) {
         lines.push(
           <Line
             key={`h-minor-${meters}`}
-            points={[canvasBounds.left * basePx, canvasY, canvasBounds.right * basePx, canvasY]}
+            points={[canvasBounds.left * PIXELS_PER_METER, canvasY, canvasBounds.right * PIXELS_PER_METER, canvasY]}
             stroke="#c0c0c0ff"
-            strokeWidth={0.8 / viewport.zoom}
-            opacity={0.45}
+            strokeWidth={GRID_MINOR_STROKE_WIDTH / viewport.zoom}
+            opacity={GRID_MINOR_LINE_OPACITY}
           />
         );
       }
@@ -381,15 +389,15 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
 
     // Horizontal lines - Major
     for (let meters = startYMajor; meters <= endYMajor; meters += majorSpacing) {
-      const canvasY = meters * basePx;
+      const canvasY = meters * PIXELS_PER_METER;
       if (meters >= canvasBounds.top && meters <= canvasBounds.bottom) {
         lines.push(
           <Line
             key={`h-major-${meters}`}
-            points={[canvasBounds.left * basePx, canvasY, canvasBounds.right * basePx, canvasY]}
+            points={[canvasBounds.left * PIXELS_PER_METER, canvasY, canvasBounds.right * PIXELS_PER_METER, canvasY]}
             stroke="#b9b9b9ff"
-            strokeWidth={1.3 / viewport.zoom}
-            opacity={0.6}
+            strokeWidth={GRID_MAJOR_STROKE_WIDTH / viewport.zoom}
+            opacity={GRID_MAJOR_LINE_OPACITY}
           />
         );
       }
@@ -432,11 +440,11 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
             <Rect
               x={0}
               y={0}
-              width={10 * 100} // 10 metros * 100px/metro = 1000px a zoom 1x
-              height={8 * 100} // 8 metros * 100px/metro = 800px a zoom 1x
+              width={CANVAS_WIDTH_PX}
+              height={CANVAS_HEIGHT_PX}
               fill="#f1f8e9"
               stroke="#b9b9b9ff"
-              strokeWidth={1.3 / viewport.zoom}
+              strokeWidth={CANVAS_BORDER_STROKE_WIDTH / viewport.zoom}
             />
             {renderGrid()}
           </Layer>
@@ -449,7 +457,7 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
               <PlacedPlantCanvas
                 key={placedPlant.instanceId}
                 placedPlant={placedPlant}
-                pixelsPerMeter={100}
+                pixelsPerMeter={PIXELS_PER_METER}
                 showConfirmationEffect={placedPlant.instanceId === newlyPlacedPlantId}
                 onSelect={onPlantSelect}
                 onDragStart={onPlantDragStart}
@@ -465,10 +473,10 @@ export function GardenCanvas({ viewport, showGrid, showRulers, layerVisibility, 
             {selectedPlantId && selectedPlantId !== draggingPlantId && (() => {
               const selectedPlant = placedPlants.find(p => p.instanceId === selectedPlantId);
               return selectedPlant ? (
-                <SelectionHighlight
-                  placedPlant={selectedPlant}
-                  pixelsPerMeter={100}
-                />
+                  <SelectionHighlight
+                    placedPlant={selectedPlant}
+                    pixelsPerMeter={PIXELS_PER_METER}
+                  />
               ) : null;
             })()}
           </Layer>

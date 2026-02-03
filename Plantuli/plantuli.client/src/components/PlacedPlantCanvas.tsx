@@ -3,6 +3,19 @@ import { Circle, Group, Image } from 'react-konva';
 import type { KonvaEventObject } from 'konva/lib/Node';
 import Konva from 'konva';
 import { logger } from '../utils/logger';
+import {
+    DRAG_MOVEMENT_THRESHOLD,
+    QUICK_CLICK_THRESHOLD_MS,
+    PLANT_CONFIRMATION_ANIMATION_DURATION,
+    PLANT_CONFIRMATION_SCALE,
+    PLANT_BACKGROUND_OPACITY,
+    PLANT_BACKGROUND_STROKE_WIDTH,
+    PLANT_IMAGE_OPACITY,
+    PLANT_FALLBACK_OPACITY,
+    PLANT_BORDER_OPACITY,
+    PLANT_BORDER_STROKE_WIDTH,
+    DASH_PATTERN
+} from '../constants';
 import type { PlacedPlant } from '../types';
 
 interface PlacedPlantCanvasProps {
@@ -52,18 +65,18 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
       // Start with normal scale
       groupRef.current.scale({ x: 1, y: 1 });
       
-      // Animate to 1.1x scale then back to 1x
+      // Animate to confirmation scale then back to 1x
       const tween = new Konva.Tween({
         node: groupRef.current,
-        duration: 0.15,
-        scaleX: 1.1,
-        scaleY: 1.1,
+        duration: PLANT_CONFIRMATION_ANIMATION_DURATION,
+        scaleX: PLANT_CONFIRMATION_SCALE,
+        scaleY: PLANT_CONFIRMATION_SCALE,
         easing: Konva.Easings.EaseInOut,
         onFinish: () => {
           // Animate back to normal scale
           new Konva.Tween({
             node: groupRef.current!,
-            duration: 0.15,
+            duration: PLANT_CONFIRMATION_ANIMATION_DURATION,
             scaleX: 1,
             scaleY: 1,
             easing: Konva.Easings.EaseInOut,
@@ -117,10 +130,10 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
     // Check if plant actually moved from original position
     const deltaX = Math.abs(currentCanvasX - canvasX);
     const deltaY = Math.abs(currentCanvasY - canvasY);
-    const actuallyMoved = deltaX > 5 || deltaY > 5; // Slightly larger threshold
+    const actuallyMoved = deltaX > DRAG_MOVEMENT_THRESHOLD || deltaY > DRAG_MOVEMENT_THRESHOLD;
     
     // Additional check: if drag time was very short and minimal movement, treat as click
-    const isQuickClick = timeDiff < 150 && !actuallyMoved;
+    const isQuickClick = timeDiff < QUICK_CLICK_THRESHOLD_MS && !actuallyMoved;
     
     if (actuallyMoved && !isQuickClick) {
       // Real drag - update position
@@ -151,16 +164,16 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      {/* Plant background circle - MORE VISIBLE FOR DEBUGGING */}
+      {/* Plant background circle */}
       <Circle
         x={0}
         y={0}
         radiusX={radiusX}
         radiusY={radiusY}
-        fill={plant.color} // Full color instead of transparent
+        fill={plant.color}
         stroke={plant.color}
-        strokeWidth={3} // Thicker stroke
-        opacity={0.8} // More opaque
+        strokeWidth={PLANT_BACKGROUND_STROKE_WIDTH}
+        opacity={PLANT_BACKGROUND_OPACITY}
       />
       
       {/* Plant image */}
@@ -171,7 +184,7 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
           width={radiusX * 2}
           height={radiusY * 2}
           image={plantImage}
-          opacity={0.9}
+          opacity={PLANT_IMAGE_OPACITY}
         />
       )}
       
@@ -182,7 +195,7 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
           y={0}
           radius={Math.min(radiusX, radiusY)}
           fill={plant.color}
-          opacity={0.7}
+          opacity={PLANT_FALLBACK_OPACITY}
         />
       )}
       
@@ -194,9 +207,9 @@ export function PlacedPlantCanvas({ placedPlant, pixelsPerMeter = 100, showConfi
         radiusY={radiusY}
         fill="transparent"
         stroke={plant.color}
-        strokeWidth={1.5}
-        opacity={0.5}
-        dash={[8, 4]}
+        strokeWidth={PLANT_BORDER_STROKE_WIDTH}
+        opacity={PLANT_BORDER_OPACITY}
+        dash={DASH_PATTERN}
       />
     </Group>
   );
