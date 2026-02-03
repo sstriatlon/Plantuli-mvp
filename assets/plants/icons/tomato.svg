@@ -1,0 +1,37 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Tomato plant with fruit -->
+  <g transform="translate(12, 12)">
+    <!-- Main stem -->
+    <rect x="-0.5" y="-2" width="1" height="12" fill="#16a34a"/>
+    
+    <!-- Tomato fruits -->
+    <circle cx="-3" cy="-4" r="2" fill="#dc2626"/>
+    <circle cx="3" cy="-2" r="1.8" fill="#ef4444"/>
+    <circle cx="-1" cy="1" r="1.5" fill="#f87171"/>
+    
+    <!-- Tomato tops/calyxes -->
+    <g transform="translate(-3, -4)">
+      <path d="M-1,-2 L-0.5,-1.5 L0,-2 L0.5,-1.5 L1,-2" stroke="#16a34a" stroke-width="0.5" fill="none"/>
+    </g>
+    <g transform="translate(3, -2)">
+      <path d="M-0.8,-1.8 L-0.3,-1.3 L0.3,-1.3 L0.8,-1.8" stroke="#16a34a" stroke-width="0.4" fill="none"/>
+    </g>
+    
+    <!-- Leaves -->
+    <g transform="translate(-4, -1)">
+      <!-- Compound tomato leaf -->
+      <ellipse cx="0" cy="0" rx="1.5" ry="2.5" fill="#22c55e" transform="rotate(-20)"/>
+      <ellipse cx="-0.8" cy="-1" rx="0.8" ry="1.2" fill="#16a34a" transform="rotate(-30)"/>
+      <ellipse cx="0.8" cy="1" rx="0.8" ry="1.2" fill="#16a34a" transform="rotate(-10)"/>
+    </g>
+    
+    <g transform="translate(4, 2)">
+      <ellipse cx="0" cy="0" rx="1.5" ry="2.5" fill="#22c55e" transform="rotate(20)"/>
+      <ellipse cx="-0.8" cy="1" rx="0.8" ry="1.2" fill="#16a34a" transform="rotate(10)"/>
+      <ellipse cx="0.8" cy="-1" rx="0.8" ry="1.2" fill="#16a34a" transform="rotate(30)"/>
+    </g>
+    
+    <!-- Support stakes hint -->
+    <rect x="4.5" y="-6" width="0.3" height="14" fill="#92400e" opacity="0.6"/>
+  </g>
+</svg>

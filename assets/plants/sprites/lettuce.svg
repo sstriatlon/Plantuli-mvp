@@ -1,0 +1,60 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Detailed lettuce head for canvas -->
+  <g transform="translate(32, 32)">
+    <!-- Large outer leaves -->
+    <ellipse cx="-6" cy="4" rx="6" ry="10" fill="#22c55e" transform="rotate(-35)" opacity="0.9"/>
+    <ellipse cx="6" cy="4" rx="6" ry="10" fill="#22c55e" transform="rotate(35)" opacity="0.9"/>
+    <ellipse cx="0" cy="-2" rx="6" ry="10" fill="#16a34a" opacity="0.9"/>
+    <ellipse cx="-4" cy="-6" rx="5" ry="8" fill="#22c55e" transform="rotate(-15)" opacity="0.8"/>
+    <ellipse cx="4" cy="-6" rx="5" ry="8" fill="#22c55e" transform="rotate(15)" opacity="0.8"/>
+    
+    <!-- Second layer */
+    <ellipse cx="-4" cy="2" rx="4.5" ry="8" fill="#4ade80" transform="rotate(-25)" opacity="0.8"/>
+    <ellipse cx="4" cy="2" rx="4.5" ry="8" fill="#4ade80" transform="rotate(25)" opacity="0.8"/>
+    <ellipse cx="0" cy="0" rx="4.5" ry="8" fill="#22c55e" opacity="0.8"/>
+    <ellipse cx="-2" cy="-4" rx="4" ry="7" fill="#4ade80" transform="rotate(-10)" opacity="0.7"/>
+    <ellipse cx="2" cy="-4" rx="4" ry="7" fill="#4ade80" transform="rotate(10)" opacity="0.7"/>
+    
+    <!-- Third layer */
+    <ellipse cx="-3" cy="1" rx="3.5" ry="6.5" fill="#65a30d" transform="rotate(-20)" opacity="0.9"/>
+    <ellipse cx="3" cy="1" rx="3.5" ry="6.5" fill="#65a30d" transform="rotate(20)" opacity="0.9"/>
+    <ellipse cx="0" cy="0" rx="3.5" ry="6.5" fill="#84cc16" opacity="0.8"/>
+    <ellipse cx="-1.5" cy="-2" rx="3" ry="6" fill="#65a30d" transform="rotate(-8)" opacity="0.8"/>
+    <ellipse cx="1.5" cy="-2" rx="3" ry="6" fill="#65a30d" transform="rotate(8)" opacity="0.8"/>
+    
+    <!-- Inner layers */
+    <ellipse cx="-2" cy="0.5" rx="2.5" ry="5" fill="#a3e635" transform="rotate(-12)" opacity="0.9"/>
+    <ellipse cx="2" cy="0.5" rx="2.5" ry="5" fill="#a3e635" transform="rotate(12)" opacity="0.9"/>
+    <ellipse cx="0" cy="0" rx="2.5" ry="5" fill="#84cc16" opacity="0.8"/>
+    
+    <!-- Center heart -->
+    <ellipse cx="0" cy="1" rx="2" ry="4" fill="#a3e635" opacity="0.9"/>
+    <ellipse cx="0" cy="0.5" rx="1.5" ry="3.5" fill="#bef264" opacity="0.8"/>
+    
+    <!-- Detailed leaf veins */
+    <g stroke="#16a34a" stroke-width="0.8" opacity="0.6">
+      <line x1="-6" y1="-6" x2="-6" y2="12"/>
+      <line x1="6" y1="-6" x2="6" y2="12"/>
+      <line x1="0" y1="-10" x2="0" y2="6"/>
+      <line x1="-3" y1="-8" x2="-3" y2="6"/>
+      <line x1="3" y1="-8" x2="3" y2="6"/>
+      <line x1="-1.5" y1="-6" x2="-1.5" y2="4"/>
+      <line x1="1.5" y1="-6" x2="1.5" y2="4"/>
+    </g>
+    
+    <!-- Secondary veins */
+    <g stroke="#16a34a" stroke-width="0.4" opacity="0.4">
+      <line x1="-5" y1="-4" x2="-1" y2="-2"/>
+      <line x1="5" y1="-4" x2="1" y2="-2"/>
+      <line x1="-4" y1="0" x2="-1" y2="1"/>
+      <line x1="4" y1="0" x2="1" y2="1"/>
+      <line x1="-3" y1="3" x2="-1" y2="3"/>
+      <line x1="3" y1="3" x2="1" y2="3"/>
+    </g>
+    
+    <!-- Root system -->
+    <ellipse cx="0" cy="14" rx="4" ry="2" fill="#78350f" opacity="0.5"/>
+    <ellipse cx="-2" cy="12" rx="1.5" ry="1" fill="#78350f" opacity="0.3"/>
+    <ellipse cx="2" cy="12" rx="1.5" ry="1" fill="#78350f" opacity="0.3"/>
+  </g>
+</svg>

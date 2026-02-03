@@ -1,0 +1,32 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lavender spikes -->
+  <g transform="translate(12, 12)">
+    <!-- Multiple flower spikes -->
+    <ellipse cx="-2" cy="-6" rx="0.5" ry="4" fill="#8b5cf6"/>
+    <ellipse cx="0" cy="-7" rx="0.5" ry="5" fill="#a855f7"/>
+    <ellipse cx="2" cy="-6" rx="0.5" ry="4" fill="#8b5cf6"/>
+    
+    <!-- Small flowers on spikes -->
+    <circle cx="-2" cy="-8" r="0.3" fill="#c084fc"/>
+    <circle cx="-2" cy="-6" r="0.3" fill="#c084fc"/>
+    <circle cx="-2" cy="-4" r="0.3" fill="#c084fc"/>
+    
+    <circle cx="0" cy="-10" r="0.3" fill="#c084fc"/>
+    <circle cx="0" cy="-8" r="0.3" fill="#c084fc"/>
+    <circle cx="0" cy="-6" r="0.3" fill="#c084fc"/>
+    <circle cx="0" cy="-4" r="0.3" fill="#c084fc"/>
+    
+    <circle cx="2" cy="-8" r="0.3" fill="#c084fc"/>
+    <circle cx="2" cy="-6" r="0.3" fill="#c084fc"/>
+    <circle cx="2" cy="-4" r="0.3" fill="#c084fc"/>
+    
+    <!-- Stems -->
+    <rect x="-2.2" y="-2" width="0.4" height="6" fill="#16a34a"/>
+    <rect x="-0.2" y="-2" width="0.4" height="7" fill="#16a34a"/>
+    <rect x="1.8" y="-2" width="0.4" height="6" fill="#16a34a"/>
+    
+    <!-- Base leaves -->
+    <ellipse cx="-3" cy="2" rx="1.5" ry="0.8" fill="#22c55e" transform="rotate(-20 -3 2)"/>
+    <ellipse cx="3" cy="2" rx="1.5" ry="0.8" fill="#22c55e" transform="rotate(20 3 2)"/>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Basil plant with characteristic leaves -->
+  <g transform="translate(12, 12)">
+    <!-- Main stem -->
+    <rect x="-0.3" y="-2" width="0.6" height="10" fill="#16a34a"/>
+    
+    <!-- Basil leaves - oval shaped with pointed tips -->
+    <!-- Top leaves -->
+    <ellipse cx="-2" cy="-6" rx="1.5" ry="2.5" fill="#22c55e" transform="rotate(-15 -2 -6)"/>
+    <ellipse cx="2" cy="-6" rx="1.5" ry="2.5" fill="#22c55e" transform="rotate(15 2 -6)"/>
+    
+    <!-- Middle leaves -->
+    <ellipse cx="-2.5" cy="-2" rx="1.8" ry="3" fill="#16a34a" transform="rotate(-20 -2.5 -2)"/>
+    <ellipse cx="2.5" cy="-2" rx="1.8" ry="3" fill="#16a34a" transform="rotate(20 2.5 -2)"/>
+    
+    <!-- Lower leaves -->
+    <ellipse cx="-2" cy="2" rx="1.6" ry="2.8" fill="#15803d" transform="rotate(-10 -2 2)"/>
+    <ellipse cx="2" cy="2" rx="1.6" ry="2.8" fill="#15803d" transform="rotate(10 2 2)"/>
+    
+    <!-- Leaf veins -->
+    <line x1="-2" y1="-8" x2="-2" y2="-4" stroke="#15803d" stroke-width="0.2"/>
+    <line x1="2" y1="-8" x2="2" y2="-4" stroke="#15803d" stroke-width="0.2"/>
+    <line x1="-2.5" y1="-5" x2="-2.5" y2="1" stroke="#15803d" stroke-width="0.2"/>
+    <line x1="2.5" y1="-5" x2="2.5" y2="1" stroke="#15803d" stroke-width="0.2"/>
+    
+    <!-- Small flower buds at top -->
+    <circle cx="0" cy="-8" r="0.4" fill="#f8fafc"/>
+    <circle cx="-0.5" cy="-7.5" r="0.3" fill="#f8fafc"/>
+    <circle cx="0.5" cy="-7.5" r="0.3" fill="#f8fafc"/>
+  </g>
+</svg>

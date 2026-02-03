@@ -1,0 +1,24 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sunflower petals -->
+  <g transform="translate(12, 8)">
+    <!-- Yellow petals radiating from center -->
+    <ellipse cx="0" cy="-4" rx="1" ry="3" fill="#fbbf24"/>
+    <ellipse cx="2.8" cy="-2.8" rx="1" ry="3" fill="#fbbf24" transform="rotate(45 2.8 -2.8)"/>
+    <ellipse cx="4" cy="0" rx="1" ry="3" fill="#fbbf24" transform="rotate(90 4 0)"/>
+    <ellipse cx="2.8" cy="2.8" rx="1" ry="3" fill="#fbbf24" transform="rotate(135 2.8 2.8)"/>
+    <ellipse cx="0" cy="4" rx="1" ry="3" fill="#fbbf24" transform="rotate(180 0 4)"/>
+    <ellipse cx="-2.8" cy="2.8" rx="1" ry="3" fill="#fbbf24" transform="rotate(225 -2.8 2.8)"/>
+    <ellipse cx="-4" cy="0" rx="1" ry="3" fill="#fbbf24" transform="rotate(270 -4 0)"/>
+    <ellipse cx="-2.8" cy="-2.8" rx="1" ry="3" fill="#fbbf24" transform="rotate(315 -2.8 -2.8)"/>
+    
+    <!-- Dark center -->
+    <circle cx="0" cy="0" r="2.5" fill="#a16207"/>
+  </g>
+  
+  <!-- Stem -->
+  <rect x="11.5" y="12" width="1" height="9" fill="#166534"/>
+  
+  <!-- Leaves -->
+  <ellipse cx="9" cy="16" rx="2" ry="1.5" fill="#16a34a" transform="rotate(-20 9 16)"/>
+  <ellipse cx="15" cy="18" rx="2" ry="1.5" fill="#16a34a" transform="rotate(20 15 18)"/>
+</svg>

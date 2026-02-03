@@ -1,0 +1,127 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Detailed rosemary for canvas -->
+  <g transform="translate(32, 32)">
+    <!-- Multiple woody rosemary stems -->
+    <rect x="-0.8" y="-22" width="1.6" height="40" fill="#16a34a"/>
+    <rect x="-4" y="-18" width="1.2" height="34" fill="#15803d"/>
+    <rect x="2.8" y="-16" width="1.2" height="30" fill="#15803d"/>
+    <rect x="-7" y="-14" width="1" height="26" fill="#15803d"/>
+    <rect x="6" y="-12" width="1" height="24" fill="#15803d"/>
+    
+    <!-- Dense needle-like rosemary leaves -->
+    <g fill="#22c55e" opacity="0.95">
+      <!-- Left side dense needles -->
+      <rect x="-8" y="-16" width="3" height="0.6" transform="rotate(-20)"/>
+      <rect x="-7.5" y="-14.5" width="2.8" height="0.6" transform="rotate(-15)"/>
+      <rect x="-8.2" y="-13" width="3.2" height="0.6" transform="rotate(-25)"/>
+      <rect x="-7.8" y="-11.5" width="2.9" height="0.6" transform="rotate(-12)"/>
+      <rect x="-8.5" y="-10" width="3.5" height="0.6" transform="rotate(-28)"/>
+      <rect x="-7.2" y="-8.5" width="2.6" height="0.6" transform="rotate(-8)"/>
+      <rect x="-8.8" y="-7" width="3.8" height="0.6" transform="rotate(-32)"/>
+      <rect x="-7.6" y="-5.5" width="2.8" height="0.6" transform="rotate(-18)"/>
+      <rect x="-8.1" y="-4" width="3.1" height="0.6" transform="rotate(-22)"/>
+      <rect x="-7.4" y="-2.5" width="2.7" height="0.6" transform="rotate(-10)"/>
+      <rect x="-8.3" y="-1" width="3.3" height="0.6" transform="rotate(-26)"/>
+      <rect x="-7.1" y="0.5" width="2.5" height="0.6" transform="rotate(-5)"/>
+      <rect x="-8.6" y="2" width="3.6" height="0.6" transform="rotate(-30)"/>
+      <rect x="-7.7" y="3.5" width="2.9" height="0.6" transform="rotate(-14)"/>
+      <rect x="-8" y="5" width="3" height="0.6" transform="rotate(-20)"/>
+      <rect x="-7.3" y="6.5" width="2.6" height="0.6" transform="rotate(-8)"/>
+      <rect x="-8.4" y="8" width="3.4" height="0.6" transform="rotate(-24)"/>
+    </g>
+    
+    <g fill="#22c55e" opacity="0.95">
+      <!-- Right side dense needles -->
+      <rect x="5.5" y="-15" width="3" height="0.6" transform="rotate(20)"/>
+      <rect x="5" y="-13.5" width="2.8" height="0.6" transform="rotate(15)"/>
+      <rect x="5.7" y="-12" width="3.2" height="0.6" transform="rotate(25)"/>
+      <rect x="5.3" y="-10.5" width="2.9" height="0.6" transform="rotate(12)"/>
+      <rect x="6" y="-9" width="3.5" height="0.6" transform="rotate(28)"/>
+      <rect x="4.7" y="-7.5" width="2.6" height="0.6" transform="rotate(8)"/>
+      <rect x="6.3" y="-6" width="3.8" height="0.6" transform="rotate(32)"/>
+      <rect x="5.1" y="-4.5" width="2.8" height="0.6" transform="rotate(18)"/>
+      <rect x="5.6" y="-3" width="3.1" height="0.6" transform="rotate(22)"/>
+      <rect x="4.9" y="-1.5" width="2.7" height="0.6" transform="rotate(10)"/>
+      <rect x="5.8" y="0" width="3.3" height="0.6" transform="rotate(26)"/>
+      <rect x="4.6" y="1.5" width="2.5" height="0.6" transform="rotate(5)"/>
+      <rect x="6.1" y="3" width="3.6" height="0.6" transform="rotate(30)"/>
+      <rect x="5.2" y="4.5" width="2.9" height="0.6" transform="rotate(14)"/>
+      <rect x="5.5" y="6" width="3" height="0.6" transform="rotate(20)"/>
+      <rect x="4.8" y="7.5" width="2.6" height="0.6" transform="rotate(8)"/>
+      <rect x="5.9" y="9" width="3.4" height="0.6" transform="rotate(24)"/>
+    </g>
+    
+    <g fill="#16a34a" opacity="0.9">
+      <!-- Center needles along main stem -->
+      <rect x="-1.5" y="-20" width="3" height="0.6"/>
+      <rect x="-1.2" y="-18.5" width="2.4" height="0.6"/>
+      <rect x="-1.8" y="-17" width="3.6" height="0.6"/>
+      <rect x="-1" y="-15.5" width="2" height="0.6"/>
+      <rect x="-1.6" y="-14" width="3.2" height="0.6"/>
+      <rect x="-0.8" y="-12.5" width="1.6" height="0.6"/>
+      <rect x="-1.4" y="-11" width="2.8" height="0.6"/>
+      <rect x="-0.6" y="-9.5" width="1.2" height="0.6"/>
+      <rect x="-1.2" y="-8" width="2.4" height="0.6"/>
+      <rect x="-0.4" y="-6.5" width="0.8" height="0.6"/>
+      <rect x="-1" y="-5" width="2" height="0.6"/>
+      <rect x="-0.2" y="-3.5" width="0.4" height="0.6"/>
+      <rect x="-0.8" y="-2" width="1.6" height="0.6"/>
+      <rect x="0" y="-0.5" width="0" height="0.6"/>
+      <rect x="-0.6" y="1" width="1.2" height="0.6"/>
+      <rect x="0.2" y="2.5" width="-0.4" height="0.6"/>
+      <rect x="-0.4" y="4" width="0.8" height="0.6"/>
+      <rect x="0.4" y="5.5" width="-0.8" height="0.6"/>
+    </g>
+    
+    <!-- Secondary branches with needles -->
+    <g fill="#16a34a" opacity="0.8">
+      <rect x="-6" y="-12" width="2.5" height="0.5" transform="rotate(-10)"/>
+      <rect x="4" y="-10" width="2.5" height="0.5" transform="rotate(10)"/>
+      <rect x="-5.5" y="-6" width="2.2" height="0.5" transform="rotate(-8)"/>
+      <rect x="3.5" y="-4" width="2.2" height="0.5" transform="rotate(8)"/>
+      <rect x="-5" y="0" width="2" height="0.5" transform="rotate(-5)"/>
+      <rect x="3" y="2" width="2" height="0.5" transform="rotate(5)"/>
+      <rect x="-4.5" y="6" width="1.8" height="0.5" transform="rotate(-3)"/>
+      <rect x="2.5" y="8" width="1.8" height="0.5" transform="rotate(3)"/>
+    </g>
+    
+    <!-- Rosemary flowers in clusters -->
+    <g fill="#8b5cf6" opacity="0.9">
+      <circle cx="-6.5" cy="-15" r="0.6"/>
+      <circle cx="-6.2" cy="-14.3" r="0.5"/>
+      <circle cx="-6.8" cy="-14.7" r="0.4"/>
+      
+      <circle cx="5.5" cy="-12" r="0.6"/>
+      <circle cx="5.2" cy="-11.3" r="0.5"/>
+      <circle cx="5.8" cy="-11.7" r="0.4"/>
+      
+      <circle cx="-7" cy="-8" r="0.5"/>
+      <circle cx="-6.7" cy="-7.4" r="0.4"/>
+      <circle cx="-7.3" cy="-7.8" r="0.3"/>
+      
+      <circle cx="6" cy="-5" r="0.5"/>
+      <circle cx="5.7" cy="-4.4" r="0.4"/>
+      <circle cx="6.3" cy="-4.8" r="0.3"/>
+      
+      <circle cx="-6.2" cy="2" r="0.4"/>
+      <circle cx="-5.9" cy="2.5" r="0.3"/>
+      <circle cx="-6.5" cy="2.3" r="0.3"/>
+    </g>
+    
+    <!-- Woody stems at base -->
+    <g fill="#8b5a2b" opacity="0.8">
+      <rect x="-1" y="12" width="2" height="8"/>
+      <rect x="-4.5" y="10" width="1.5" height="6"/>
+      <rect x="3" y="8" width="1.5" height="8"/>
+      <rect x="-7.5" y="6" width="1.2" height="4"/>
+      <rect x="6.3" y="4" width="1.2" height="6"/>
+    </g>
+    
+    <!-- Extensive root system */
+    <ellipse cx="0" cy="22" rx="8" ry="3" fill="#92400e" opacity="0.5"/>
+    <ellipse cx="-4" cy="20" rx="3" ry="1.5" fill="#92400e" opacity="0.4"/>
+    <ellipse cx="5" cy="21" rx="3" ry="1.5" fill="#92400e" opacity="0.4"/>
+    <ellipse cx="-7" cy="18" rx="2" ry="1" fill="#92400e" opacity="0.3"/>
+    <ellipse cx="8" cy="19" rx="2" ry="1" fill="#92400e" opacity="0.3"/>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Pine tree with triangular crown -->
+  <g transform="translate(12, 12)">
+    <!-- Pine crown in layers -->
+    <!-- Top layer -->
+    <polygon points="0,-8 -2,-4 2,-4" fill="#134e4a"/>
+    <!-- Middle layer -->
+    <polygon points="0,-6 -3,-2 3,-2" fill="#166534"/>
+    <!-- Bottom layer -->
+    <polygon points="0,-4 -4,2 4,2" fill="#15803d"/>
+    
+    <!-- Trunk -->
+    <rect x="-0.8" y="2" width="1.6" height="8" fill="#92400e"/>
+    
+    <!-- Small branches/texture lines -->
+    <line x1="-1.5" y1="-6" x2="1.5" y2="-6" stroke="#0f766e" stroke-width="0.3"/>
+    <line x1="-2" y1="-3" x2="2" y2="-3" stroke="#0f766e" stroke-width="0.3"/>
+    <line x1="-2.5" y1="0" x2="2.5" y2="0" stroke="#0f766e" stroke-width="0.3"/>
+    
+    <!-- Root base -->
+    <ellipse cx="0" cy="10" rx="2" ry="0.8" fill="#78350f" opacity="0.6"/>
+  </g>
+</svg>

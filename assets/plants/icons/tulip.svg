@@ -1,0 +1,31 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Tulip flower -->
+  <g transform="translate(12, 12)">
+    <!-- Tulip petals -->
+    <g transform="translate(0, -6)">
+      <!-- Outer petals -->
+      <ellipse cx="-1" cy="0" rx="1.5" ry="3" fill="#e11d48" transform="rotate(-20)"/>
+      <ellipse cx="1" cy="0" rx="1.5" ry="3" fill="#e11d48" transform="rotate(20)"/>
+      <ellipse cx="0" cy="-0.5" rx="1.5" ry="3" fill="#f43f5e"/>
+      
+      <!-- Inner petals for depth -->
+      <ellipse cx="-0.5" cy="0.5" rx="1" ry="2" fill="#be185d" opacity="0.8"/>
+      <ellipse cx="0.5" cy="0.5" rx="1" ry="2" fill="#be185d" opacity="0.8"/>
+      
+      <!-- Center -->
+      <circle cx="0" cy="1" r="0.5" fill="#fbbf24"/>
+      <circle cx="0" cy="1" r="0.2" fill="#a16207"/>
+    </g>
+    
+    <!-- Stem -->
+    <rect x="-0.4" y="-3" width="0.8" height="10" fill="#16a34a"/>
+    
+    <!-- Leaves -->
+    <ellipse cx="-2.5" cy="2" rx="1" ry="4" fill="#22c55e" transform="rotate(-15)"/>
+    <ellipse cx="2.5" cy="3" rx="1" ry="4" fill="#22c55e" transform="rotate(15)"/>
+    
+    <!-- Leaf detail lines -->
+    <line x1="-2.5" y1="-1.5" x2="-2.5" y2="5.5" stroke="#16a34a" stroke-width="0.3"/>
+    <line x1="2.5" y1="-0.5" x2="2.5" y2="6.5" stroke="#16a34a" stroke-width="0.3"/>
+  </g>
+</svg>

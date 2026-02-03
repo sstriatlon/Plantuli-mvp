@@ -1,0 +1,42 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Narcissus/Daffodil with distinctive center - compact icon -->
+  <g transform="translate(12, 12)">
+    <!-- Narcissus flower -->
+    <g transform="translate(0, -7)">
+      <!-- Outer white petals -->
+      <ellipse cx="-1.5" cy="-0.5" rx="1.5" ry="3" fill="#fefce8" transform="rotate(-30)"/>
+      <ellipse cx="1.5" cy="-0.5" rx="1.5" ry="3" fill="#fefce8" transform="rotate(30)"/>
+      <ellipse cx="0" cy="-2" rx="1.5" ry="3" fill="#ffffff"/>
+      <ellipse cx="-1" cy="1.5" rx="1.5" ry="3" fill="#fefce8" transform="rotate(-60)"/>
+      <ellipse cx="1" cy="1.5" rx="1.5" ry="3" fill="#fefce8" transform="rotate(60)"/>
+      <ellipse cx="0" cy="2.5" rx="1.5" ry="3" fill="#ffffff"/>
+      
+      <!-- Orange/yellow center trumpet -->
+      <circle cx="0" cy="0" r="1.8" fill="#fb923c"/>
+      <circle cx="0" cy="0" r="1.4" fill="#fed7aa" opacity="0.8"/>
+      <circle cx="0" cy="0" r="1" fill="#fbbf24" opacity="0.9"/>
+      <circle cx="0" cy="0" r="0.6" fill="#f59e0b"/>
+      
+      <!-- Center details -->
+      <circle cx="0" cy="0" r="0.3" fill="#d97706"/>
+    </g>
+    
+    <!-- Stem -->
+    <rect x="-0.5" y="-4" width="1" height="12" fill="#16a34a"/>
+    
+    <!-- Narcissus leaves -->
+    <ellipse cx="-3" cy="2" rx="1" ry="6" fill="#22c55e" transform="rotate(-10)"/>
+    <ellipse cx="3" cy="3" rx="1" ry="6" fill="#22c55e" transform="rotate(10)"/>
+    <ellipse cx="0" cy="4" rx="1" ry="5" fill="#16a34a"/>
+    
+    <!-- Leaf veins -->
+    <g stroke="#15803d" stroke-width="0.3" opacity="0.6">
+      <line x1="-3" y1="-4" x2="-3" y2="8"/>
+      <line x1="3" y1="-3" x2="3" y2="9"/>
+      <line x1="0" y1="-1" x2="0" y2="9"/>
+    </g>
+    
+    <!-- Bulb indication -->
+    <ellipse cx="0" cy="8" rx="2" ry="1.2" fill="#92400e" opacity="0.4"/>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Large oak tree for canvas -->
+  <!-- Main crown -->
+  <circle cx="32" cy="20" r="12" fill="#16a34a" opacity="0.8"/>
+  <circle cx="20" cy="24" r="8" fill="#15803d" opacity="0.7"/>
+  <circle cx="44" cy="24" r="8" fill="#15803d" opacity="0.7"/>
+  <circle cx="32" cy="12" r="7" fill="#22c55e" opacity="0.6"/>
+  <circle cx="26" cy="16" r="6" fill="#16a34a" opacity="0.7"/>
+  <circle cx="38" cy="16" r="6" fill="#16a34a" opacity="0.7"/>
+  
+  <!-- Additional foliage clusters -->
+  <circle cx="16" cy="28" r="5" fill="#15803d" opacity="0.6"/>
+  <circle cx="48" cy="28" r="5" fill="#15803d" opacity="0.6"/>
+  <circle cx="32" cy="28" r="9" fill="#16a34a" opacity="0.8"/>
+  
+  <!-- Trunk with texture -->
+  <rect x="29" y="32" width="6" height="28" fill="#92400e"/>
+  <rect x="30" y="34" width="1" height="24" fill="#78350f" opacity="0.6"/>
+  <rect x="33" y="36" width="1" height="22" fill="#78350f" opacity="0.6"/>
+  
+  <!-- Main branches -->
+  <rect x="24" y="20" width="3" height="8" fill="#92400e" transform="rotate(-30 24 20)"/>
+  <rect x="37" y="20" width="3" height="8" fill="#92400e" transform="rotate(30 37 20)"/>
+  
+  <!-- Root system */
+  <ellipse cx="32" cy="60" rx="8" ry="2" fill="#78350f" opacity="0.6"/>
+  <ellipse cx="26" cy="58" rx="4" ry="1" fill="#78350f" opacity="0.4"/>
+  <ellipse cx="38" cy="58" rx="4" ry="1" fill="#78350f" opacity="0.4"/>
+</svg>

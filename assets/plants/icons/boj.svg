@@ -1,0 +1,68 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Boxwood shrub - compact icon -->
+  <g transform="translate(12, 12)">
+    <!-- Dense boxwood foliage structure -->
+    <g fill="#16a34a" opacity="0.9">
+      <!-- Top layer - smaller dense leaves -->
+      <circle cx="-2" cy="-6" r="1.8"/>
+      <circle cx="2" cy="-6" r="1.8"/>
+      <circle cx="0" cy="-7.5" r="1.5"/>
+      <circle cx="-1" cy="-5" r="1.2"/>
+      <circle cx="1" cy="-5" r="1.2"/>
+    </g>
+    
+    <g fill="#22c55e" opacity="0.8">
+      <!-- Middle layer -->
+      <circle cx="-3" cy="-3" r="2"/>
+      <circle cy="3" cy="-3" r="2"/>
+      <circle cx="0" cy="-4" r="1.8"/>
+      <circle cx="-1.5" cy="-2" r="1.5"/>
+      <circle cx="1.5" cy="-2" r="1.5"/>
+      <circle cx="-2.5" cy="-1" r="1.3"/>
+      <circle cx="2.5" cy="-1" r="1.3"/>
+    </g>
+    
+    <g fill="#16a34a" opacity="0.7">
+      <!-- Lower layer */
+      <circle cx="-3.5" cy="1" r="2.2"/>
+      <circle cx="3.5" cy="1" r="2.2"/>
+      <circle cx="0" cy="0" r="2"/>
+      <circle cx="-2" cy="2" r="1.8"/>
+      <circle cx="2" cy="2" r="1.8"/>
+      <circle cx="-1" cy="3" r="1.5"/>
+      <circle cx="1" cy="3" r="1.5"/>
+    </g>
+    
+    <g fill="#15803d" opacity="0.6">
+      <!-- Base layer -->
+      <circle cx="-3" cy="4" r="2"/>
+      <circle cx="3" cy="4" r="2"/>
+      <circle cx="0" cy="5" r="1.8"/>
+      <circle cx="-1.5" cy="6" r="1.3"/>
+      <circle cx="1.5" cy="6" r="1.3"/>
+    </g>
+    
+    <!-- Individual small leaves for texture -->
+    <g fill="#4ade80" opacity="0.6">
+      <ellipse cx="-2.5" cy="-5.5" rx="0.4" ry="0.8" transform="rotate(-30)"/>
+      <ellipse cx="2.5" cy="-5.5" rx="0.4" ry="0.8" transform="rotate(30)"/>
+      <ellipse cx="0" cy="-6.5" rx="0.4" ry="0.8"/>
+      <ellipse cx="-3.2" cy="-2.5" rx="0.4" ry="0.8" transform="rotate(-20)"/>
+      <ellipse cx="3.2" cy="-2.5" rx="0.4" ry="0.8" transform="rotate(20)"/>
+      <ellipse cx="-2.8" cy="0.5" rx="0.4" ry="0.8" transform="rotate(-15)"/>
+      <ellipse cx="2.8" cy="0.5" rx="0.4" ry="0.8" transform="rotate(15)"/>
+      <ellipse cx="-2.2" cy="3.5" rx="0.4" ry="0.8" transform="rotate(-10)"/>
+      <ellipse cx="2.2" cy="3.5" rx="0.4" ry="0.8" transform="rotate(10)"/>
+    </g>
+    
+    <!-- Hidden stems -->
+    <g fill="#8b5a2b" opacity="0.3">
+      <rect x="-0.3" y="2" width="0.6" height="6"/>
+      <rect x="-1.5" y="4" width="0.4" height="4"/>
+      <rect x="1.1" y="4" width="0.4" height="4"/>
+    </g>
+    
+    <!-- Root system -->
+    <ellipse cx="0" cy="8" rx="3.5" ry="1.2" fill="#92400e" opacity="0.4"/>
+  </g>
+</svg>

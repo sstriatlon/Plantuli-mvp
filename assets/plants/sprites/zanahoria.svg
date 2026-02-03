@@ -1,0 +1,168 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Detailed carrot plant for canvas -->
+  <g transform="translate(32, 32)">
+    <!-- Large carrot root underground -->
+    <g transform="translate(0, 8)">
+      <ellipse cx="0" cy="4" rx="3" ry="10" fill="#f97316"/>
+      <ellipse cx="0" cy="3" rx="2.5" ry="8.5" fill="#fb923c" opacity="0.95"/>
+      <ellipse cx="0" cy="2" rx="2" ry="7" fill="#fdba74" opacity="0.8"/>
+      <ellipse cx="0" cy="1" rx="1.5" ry="5.5" fill="#fed7aa" opacity="0.6"/>
+      <ellipse cx="0" cy="0" rx="1" ry="4" fill="#fef3c7" opacity="0.4"/>
+      
+      <!-- Detailed carrot rings -->
+      <g stroke="#ea580c" stroke-width="0.5" opacity="0.7">
+        <ellipse cx="0" cy="-2" rx="1.8" ry="0.3"/>
+        <ellipse cx="0" cy="0" rx="2.2" ry="0.3"/>
+        <ellipse cx="0" cy="2" rx="2.6" ry="0.3"/>
+        <ellipse cx="0" cy="4" rx="2.9" ry="0.3"/>
+        <ellipse cx="0" cy="6" rx="2.7" ry="0.3"/>
+        <ellipse cx="0" cy="8" rx="2.3" ry="0.3"/>
+        <ellipse cx="0" cy="10" rx="1.8" ry="0.3"/>
+        <ellipse cx="0" cy="12" rx="1.2" ry="0.3"/>
+      </g>
+      
+      <!-- Carrot root tip -->
+      <ellipse cx="0" cy="14" rx="0.8" ry="2" fill="#ea580c"/>
+      <ellipse cx="0" cy="15" rx="0.4" ry="1" fill="#dc2626"/>
+      
+      <!-- Surface texture lines */
+      <g stroke="#dc2626" stroke-width="0.3" opacity="0.5">
+        <line x1="-2.5" y1="-1" x2="-2.5" y2="11"/>
+        <line x1="2.5" y1="-1" x2="2.5" y2="11"/>
+        <line x1="-1.8" y1="-2" x2="-1.8" y2="12"/>
+        <line x1="1.8" y1="-2" x2="1.8" y2="12"/>
+        <line x1="-1" y1="-3" x2="-1" y2="13"/>
+        <line x1="1" y1="-3" x2="1" y2="13"/>
+      </g>
+    </g>
+    
+    <!-- Dense feathery carrot leaves above ground -->
+    <g fill="#22c55e" opacity="0.95">
+      <!-- Left dense feathery cluster -->
+      <g transform="translate(-6, -18)">
+        <rect x="0" y="0" width="0.6" height="20" fill="#16a34a"/>
+        <g fill="#22c55e">
+          <!-- Dense feathery segments -->
+          <ellipse cx="-2" cy="2" rx="0.6" ry="3" transform="rotate(-50)"/>
+          <ellipse cx="-1.5" cy="4" rx="0.6" ry="2.5" transform="rotate(-35)"/>
+          <ellipse cx="-2.2" cy="6" rx="0.6" ry="3.5" transform="rotate(-55)"/>
+          <ellipse cx="-1.3" cy="8" rx="0.6" ry="2.2" transform="rotate(-30)"/>
+          <ellipse cx="-2.5" cy="10" rx="0.6" ry="4" transform="rotate(-60)"/>
+          <ellipse cx="-1.6" cy="12" rx="0.6" ry="2.8" transform="rotate(-40)"/>
+          <ellipse cx="-2.3" cy="14" rx="0.6" ry="3.2" transform="rotate(-52)"/>
+          <ellipse cx="-1.4" cy="16" rx="0.6" ry="2.5" transform="rotate(-32)"/>
+          
+          <ellipse cx="2" cy="2.5" rx="0.6" ry="3" transform="rotate(50)"/>
+          <ellipse cx="1.5" cy="4.5" rx="0.6" ry="2.5" transform="rotate(35)"/>
+          <ellipse cx="2.2" cy="6.5" rx="0.6" ry="3.5" transform="rotate(55)"/>
+          <ellipse cx="1.3" cy="8.5" rx="0.6" ry="2.2" transform="rotate(30)"/>
+          <ellipse cx="2.5" cy="10.5" rx="0.6" ry="4" transform="rotate(60)"/>
+          <ellipse cx="1.6" cy="12.5" rx="0.6" ry="2.8" transform="rotate(40)"/>
+          <ellipse cx="2.3" cy="14.5" rx="0.6" ry="3.2" transform="rotate(52)"/>
+          <ellipse cx="1.4" cy="16.5" rx="0.6" ry="2.5" transform="rotate(32)"/>
+        </g>
+      </g>
+      
+      <!-- Center main feathery cluster -->
+      <g transform="translate(0, -22)">
+        <rect x="0" y="0" width="0.8" height="24" fill="#16a34a"/>
+        <g fill="#22c55e">
+          <!-- Dense main feathery segments -->
+          <ellipse cx="-2.2" cy="3" rx="0.7" ry="3.5" transform="rotate(-45)"/>
+          <ellipse cx="-1.7" cy="5.5" rx="0.7" ry="2.8" transform="rotate(-30)"/>
+          <ellipse cx="-2.5" cy="8" rx="0.7" ry="4" transform="rotate(-50)"/>
+          <ellipse cx="-1.5" cy="10.5" rx="0.7" ry="2.5" transform="rotate(-25)"/>
+          <ellipse cx="-2.8" cy="13" rx="0.7" ry="4.5" transform="rotate(-55)"/>
+          <ellipse cx="-1.8" cy="15.5" rx="0.7" ry="3" transform="rotate(-35)"/>
+          <ellipse cx="-2.6" cy="18" rx="0.7" ry="3.8" transform="rotate(-48)"/>
+          <ellipse cx="-1.6" cy="20.5" rx="0.7" ry="2.7" transform="rotate(-28)"/>
+          
+          <ellipse cx="2.2" cy="3.5" rx="0.7" ry="3.5" transform="rotate(45)"/>
+          <ellipse cx="1.7" cy="6" rx="0.7" ry="2.8" transform="rotate(30)"/>
+          <ellipse cx="2.5" cy="8.5" rx="0.7" ry="4" transform="rotate(50)"/>
+          <ellipse cx="1.5" cy="11" rx="0.7" ry="2.5" transform="rotate(25)"/>
+          <ellipse cx="2.8" cy="13.5" rx="0.7" ry="4.5" transform="rotate(55)"/>
+          <ellipse cx="1.8" cy="16" rx="0.7" ry="3" transform="rotate(35)"/>
+          <ellipse cx="2.6" cy="18.5" rx="0.7" ry="3.8" transform="rotate(48)"/>
+          <ellipse cx="1.6" cy="21" rx="0.7" ry="2.7" transform="rotate(28)"/>
+        </g>
+      </g>
+      
+      <!-- Right dense feathery cluster -->
+      <g transform="translate(6, -16)">
+        <rect x="0" y="0" width="0.6" height="18" fill="#16a34a"/>
+        <g fill="#22c55e">
+          <!-- Dense feathery segments -->
+          <ellipse cx="-2" cy="1.5" rx="0.6" ry="2.8" transform="rotate(-50)"/>
+          <ellipse cx="-1.5" cy="3.5" rx="0.6" ry="2.3" transform="rotate(-35)"/>
+          <ellipse cx="-2.2" cy="5.5" rx="0.6" ry="3.3" transform="rotate(-55)"/>
+          <ellipse cx="-1.3" cy="7.5" rx="0.6" ry="2" transform="rotate(-30)"/>
+          <ellipse cx="-2.5" cy="9.5" rx="0.6" ry="3.8" transform="rotate(-60)"/>
+          <ellipse cx="-1.6" cy="11.5" rx="0.6" ry="2.6" transform="rotate(-40)"/>
+          <ellipse cx="-2.3" cy="13.5" rx="0.6" ry="3" transform="rotate(-52)"/>
+          <ellipse cx="-1.4" cy="15.5" rx="0.6" ry="2.3" transform="rotate(-32)"/>
+          
+          <ellipse cx="2" cy="2" rx="0.6" ry="2.8" transform="rotate(50)"/>
+          <ellipse cx="1.5" cy="4" rx="0.6" ry="2.3" transform="rotate(35)"/>
+          <ellipse cx="2.2" cy="6" rx="0.6" ry="3.3" transform="rotate(55)"/>
+          <ellipse cx="1.3" cy="8" rx="0.6" ry="2" transform="rotate(30)"/>
+          <ellipse cx="2.5" cy="10" rx="0.6" ry="3.8" transform="rotate(60)"/>
+          <ellipse cx="1.6" cy="12" rx="0.6" ry="2.6" transform="rotate(40)"/>
+          <ellipse cx="2.3" cy="14" rx="0.6" ry="3" transform="rotate(52)"/>
+          <ellipse cx="1.4" cy="16" rx="0.6" ry="2.3" transform="rotate(32)"/>
+        </g>
+      </g>
+      
+      <!-- Additional smaller feathery clusters */
+      <g transform="translate(-9, -12)">
+        <rect x="0" y="0" width="0.4" height="14" fill="#15803d"/>
+        <g fill="#4ade80">
+          <ellipse cx="-1.5" cy="2" rx="0.4" ry="2.2" transform="rotate(-45)"/>
+          <ellipse cx="-1.2" cy="4" rx="0.4" ry="1.8" transform="rotate(-30)"/>
+          <ellipse cx="-1.7" cy="6" rx="0.4" ry="2.5" transform="rotate(-50)"/>
+          <ellipse cx="-1" cy="8" rx="0.4" ry="1.5" transform="rotate(-25)"/>
+          <ellipse cx="-1.5" cy="10" rx="0.4" ry="2" transform="rotate(-40)"/>
+          <ellipse cx="-1.1" cy="12" rx="0.4" ry="1.7" transform="rotate(-28)"/>
+          
+          <ellipse cx="1.5" cy="2.5" rx="0.4" ry="2.2" transform="rotate(45)"/>
+          <ellipse cx="1.2" cy="4.5" rx="0.4" ry="1.8" transform="rotate(30)"/>
+          <ellipse cx="1.7" cy="6.5" rx="0.4" ry="2.5" transform="rotate(50)"/>
+          <ellipse cx="1" cy="8.5" rx="0.4" ry="1.5" transform="rotate(25)"/>
+          <ellipse cx="1.5" cy="10.5" rx="0.4" ry="2" transform="rotate(40)"/>
+          <ellipse cx="1.1" cy="12.5" rx="0.4" ry="1.7" transform="rotate(28)"/>
+        </g>
+      </g>
+      
+      <g transform="translate(9, -10)">
+        <rect x="0" y="0" width="0.4" height="12" fill="#15803d"/>
+        <g fill="#4ade80">
+          <ellipse cx="-1.3" cy="1.5" rx="0.4" ry="2" transform="rotate(-45)"/>
+          <ellipse cx="-1" cy="3.5" rx="0.4" ry="1.6" transform="rotate(-30)"/>
+          <ellipse cx="-1.5" cy="5.5" rx="0.4" ry="2.3" transform="rotate(-50)"/>
+          <ellipse cx="-0.8" cy="7.5" rx="0.4" ry="1.3" transform="rotate(-25)"/>
+          <ellipse cx="-1.3" cy="9.5" rx="0.4" ry="1.8" transform="rotate(-40)"/>
+          <ellipse cx="-0.9" cy="11.5" rx="0.4" ry="1.5" transform="rotate(-28)"/>
+          
+          <ellipse cx="1.3" cy="2" rx="0.4" ry="2" transform="rotate(45)"/>
+          <ellipse cx="1" cy="4" rx="0.4" ry="1.6" transform="rotate(30)"/>
+          <ellipse cx="1.5" cy="6" rx="0.4" ry="2.3" transform="rotate(50)"/>
+          <ellipse cx="0.8" cy="8" rx="0.4" ry="1.3" transform="rotate(25)"/>
+          <ellipse cx="1.3" cy="10" rx="0.4" ry="1.8" transform="rotate(40)"/>
+          <ellipse cx="0.9" cy="12" rx="0.4" ry="1.5" transform="rotate(28)"/>
+        </g>
+      </g>
+    </g>
+    
+    <!-- Ground line with soil texture -->
+    <line x1="-15" y1="8" x2="15" y2="8" stroke="#92400e" stroke-width="1.5" opacity="0.8"/>
+    <ellipse cx="0" cy="8" rx="12" ry="1" fill="#a16207" opacity="0.4"/>
+    
+    <!-- Small carrot leaves emerging from soil */
+    <g fill="#16a34a" opacity="0.6">
+      <ellipse cx="-2" cy="7" rx="0.3" ry="1" transform="rotate(-20)"/>
+      <ellipse cx="2" cy="7" rx="0.3" ry="1" transform="rotate(20)"/>
+      <ellipse cx="-1" cy="6.5" rx="0.2" ry="0.8" transform="rotate(-10)"/>
+      <ellipse cx="1" cy="6.5" rx="0.2" ry="0.8" transform="rotate(10)"/>
+    </g>
+  </g>
+</svg>

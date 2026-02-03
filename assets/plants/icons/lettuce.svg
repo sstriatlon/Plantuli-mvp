@@ -1,0 +1,34 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lettuce head with layered leaves -->
+  <g transform="translate(12, 12)">
+    <!-- Outer leaves -->
+    <ellipse cx="-2" cy="2" rx="2.5" ry="3.5" fill="#22c55e" transform="rotate(-30)" opacity="0.9"/>
+    <ellipse cx="2" cy="2" rx="2.5" ry="3.5" fill="#22c55e" transform="rotate(30)" opacity="0.9"/>
+    <ellipse cx="0" cy="-1" rx="2.5" ry="3.5" fill="#16a34a" opacity="0.9"/>
+    
+    <!-- Middle layer -->
+    <ellipse cx="-1.5" cy="1" rx="2" ry="3" fill="#4ade80" transform="rotate(-20)" opacity="0.8"/>
+    <ellipse cx="1.5" cy="1" rx="2" ry="3" fill="#4ade80" transform="rotate(20)" opacity="0.8"/>
+    <ellipse cx="0" cy="0" rx="2" ry="3" fill="#22c55e" opacity="0.8"/>
+    
+    <!-- Inner leaves -->
+    <ellipse cx="-1" cy="0.5" rx="1.5" ry="2.5" fill="#65a30d" transform="rotate(-15)" opacity="0.9"/>
+    <ellipse cx="1" cy="0.5" rx="1.5" ry="2.5" fill="#65a30d" transform="rotate(15)" opacity="0.9"/>
+    <ellipse cx="0" cy="0" rx="1.5" ry="2.5" fill="#84cc16" opacity="0.8"/>
+    
+    <!-- Center heart -->
+    <ellipse cx="0" cy="0.5" rx="1" ry="1.8" fill="#a3e635" opacity="0.9"/>
+    
+    <!-- Leaf veins */
+    <g stroke="#16a34a" stroke-width="0.3" opacity="0.6">
+      <line x1="-2" y1="-1" x2="-2" y2="4"/>
+      <line x1="2" y1="-1" x2="2" y2="4"/>
+      <line x1="0" y1="-3" x2="0" y2="2"/>
+      <line x1="-1" y1="-1.5" x2="-1" y2="2"/>
+      <line x1="1" y1="-1.5" x2="1" y2="2"/>
+    </g>
+    
+    <!-- Root indication -->
+    <ellipse cx="0" cy="5" rx="1.5" ry="0.5" fill="#78350f" opacity="0.4"/>
+  </g>
+</svg>
